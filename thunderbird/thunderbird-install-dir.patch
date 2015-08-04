@@ -1,0 +1,12 @@
+diff -Nur comm-esr38/mozilla/config/baseconfig.mk comm-esr38n/mozilla/config/baseconfig.mk
+--- comm-esr38/mozilla/config/baseconfig.mk	2015-07-07 17:45:45.000000000 +0000
++++ comm-esr38n/mozilla/config/baseconfig.mk	2015-07-19 21:52:04.284306830 +0000
+@@ -4,7 +4,7 @@
+ # whether a normal build is happening or whether the check is running.
+ includedir := $(includedir)/$(MOZ_APP_NAME)-$(MOZ_APP_VERSION)
+ idldir = $(datadir)/idl/$(MOZ_APP_NAME)-$(MOZ_APP_VERSION)
+-installdir = $(libdir)/$(MOZ_APP_NAME)-$(MOZ_APP_VERSION)
++installdir = $(libdir)/$(MOZ_APP_NAME)
+ sdkdir = $(libdir)/$(MOZ_APP_NAME)-devel-$(MOZ_APP_VERSION)
+ ifndef TOP_DIST
+ TOP_DIST = dist

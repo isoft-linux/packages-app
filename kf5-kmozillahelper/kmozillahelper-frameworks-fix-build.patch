@@ -1,0 +1,12 @@
+diff -Nur kmozillahelper-frameworks/CMakeLists.txt kmozillahelper-frameworksn/CMakeLists.txt
+--- kmozillahelper-frameworks/CMakeLists.txt	2015-07-19 17:25:36.000000000 +0000
++++ kmozillahelper-frameworksn/CMakeLists.txt	2015-07-19 17:28:55.471589578 +0000
+@@ -12,7 +12,7 @@
+ include(KDECMakeSettings)
+ include(FeatureSummary)
+ 
+-find_package(KF5 REQUIRED COMPONENTS Notifications KIO)
++find_package(KF5 REQUIRED COMPONENTS Notifications KIO I18n WindowSystem)
+ 
+ add_executable(kmozillahelper main.cpp)
+ 
