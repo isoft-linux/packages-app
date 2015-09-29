@@ -1,6 +1,6 @@
 Name:    kcron
 Summary: Cron KDE configuration module
-Version: 15.04.3
+Version: 15.07.90
 Release: 2%{?dist}
 
 License: GPLv2+

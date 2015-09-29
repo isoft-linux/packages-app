@@ -1,5 +1,5 @@
 Name:	    thunderbird-i18n
-Version:	38.1.0
+Version:	38.2.0
 Release:	1
 Summary:	Language pack for thunderbird
 
@@ -30,4 +30,5 @@ done
 %{_libdir}/thunderbird/extensions/langpack-*@thunderbird.mozilla.org.xpi
 
 %changelog
-
+* Fri Sep 25 2015 Cjacker <cjacker@foxmail.com>
+- update to 38.2.0

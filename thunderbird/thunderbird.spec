@@ -1,18 +1,16 @@
-#thunderbird 38.0.1 had problem to auto detect encodings.
-
-Summary:	Mozilla Thunderbird mail/newsgroup client
-Name:		thunderbird
-Version:    38.1.0
-Release:    16	
-URL:		http://www.mozilla.org/projects/thunderbird/
-License:	MPL
-Group:		Applications/Internet
-Source0:	thunderbird-%{version}.source.tar.bz2
-Source1:	thunderbird.desktop
-Source4:    thunderbird-mozconfig
-Source10:   thunderbird-vendor.js
+Summary: Mozilla Thunderbird mail/newsgroup client
+Name: thunderbird
+Version: 38.2.0
+Release: 16 
+URL: http://www.mozilla.org/projects/thunderbird/
+License: MPL
+Group:  Applications/Internet
+Source0: thunderbird-%{version}.source.tar.bz2
+Source1: thunderbird.desktop
+Source4: thunderbird-mozconfig
+Source10:  thunderbird-vendor.js
  
-Source100:	find-external-requires
+Source100: find-external-requires
 
 Patch0: thunderbird-install-dir.patch
 Patch1: thunderbird-freetype26.patch
@@ -23,16 +21,16 @@ Patch11: thunderbird-firefox-kde.patch
 Patch12: thunderbird-toolkit-download-folder.patch
 Patch13: thunderbird-mozilla-nongnome-proxies.patch 
 
-BuildRequires:	libpng-devel, libjpeg-devel, gtk2-devel
-BuildRequires:	zlib-devel, gzip, zip, unzip
-BuildRequires:	freetype-devel
+BuildRequires: libpng-devel, libjpeg-devel, gtk2-devel
+BuildRequires: zlib-devel, gzip, zip, unzip
+BuildRequires: freetype-devel
 BuildRequires:  nss-devel 
 BuildRequires:  nspr-devel
 BuildRequires:  hunspell-devel 
-Requires:	nss
-Requires:	nspr
-Obsoletes:	MozillaThunderbird
-Provides:	MozillaThunderbird = %{epoch}:%{version}
+Requires: nss
+Requires: nspr
+Obsoletes: MozillaThunderbird
+Provides: MozillaThunderbird = %{epoch}:%{version}
 
 %define _use_internal_dependency_generator 0
 %define __find_requires %{SOURCE100}

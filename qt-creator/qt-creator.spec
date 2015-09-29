@@ -1,12 +1,12 @@
-Name:           qt-creator
-Version:        3.4.2
-Release:        2
-Summary:        Lightweight and cross-platform IDE for Qt
-Group:	        Development/Tools
-License:        LGPLv2 with exceptions
-URL:            http://www.qtsoftware.com/developer/qt-creator
-Source0:        http://get.qt.nokia.com/qtcreator/%{name}-opensource-src-%{version}.tar.gz
-Source1:        qtcreator.desktop
+Name: qt-creator
+Version: 3.5.0
+Release: 3 
+Summary: Lightweight and cross-platform IDE for Qt
+License: LGPLv2 with exceptions
+URL: http://www.qtsoftware.com/developer/qt-creator
+Source0: http://get.qt.nokia.com/qtcreator/%{name}-opensource-src-%{version}.tar.gz
+Source1: qtcreator.desktop
+Patch0: qt-creator-clean-debugger-list.patch
 
 BuildRequires:  desktop-file-utils
 
@@ -46,6 +46,7 @@ FFLAGS="${FFLAGS:-%optflags}" ; export FFLAGS ; \
 qmake -r IDE_LIBRARY_BASENAME=%{_lib}
 make %{?_smp_mflags}
 make docs
+
 %install
 rm -rf $RPM_BUILD_ROOT
 make install INSTALL_ROOT=$RPM_BUILD_ROOT/%{_prefix}
@@ -76,6 +77,11 @@ fi
 %{_libdir}/qtcreator
 %{_datadir}/qtcreator
 %{_datadir}/applications/qtcreator.desktop
-%{_datadir}/icons/hicolor/*
-%{_docdir}/*
+%{_datadir}/icons/hicolor/*/apps/QtProject-qtcreator.*
+%{_docdir}/qtcreator
+
 %changelog
+* Fri Aug 21 2015 Cjacker <cjacker@foxmail.com>
+- update to 3.5.0
+- add -style fusion to desktop file to avoid crash, see: https://bugs.kde.org/show_bug.cgi?id=347524
+- clean debugger list, avoid very slow startup when lldb exist.

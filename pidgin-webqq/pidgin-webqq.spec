@@ -1,19 +1,19 @@
-Name:       pidgin-webqq		
-Version:	0.6.0
-Release:	1
-Summary:	WebQQ Plugin for Pidgin
+Name: pidgin-webqq		
+Version: 0.6.1
+Release: 1
+Summary: WebQQ Plugin for Pidgin
 
-License:    GPL	
-URL:	    https://github.com/xiehuc/pidgin-lwqq
-#https://github.com/xiehuc/pidgin-lwqq/archive
-Source0:	pidgin-lwqq-%{version}.tar.gz
+License: GPLv2	
+URL: https://github.com/xiehuc/pidgin-lwqq
+#git clone https://github.com/xiehuc/pidgin-lwqq.git
+Source0: pidgin-lwqq.tar.gz
 BuildRequires: libwebqq-devel libpurple-devel
 
 %description
 WebQQ Plugin for Pidgin
 
 %prep
-%setup -q -n pidgin-lwqq-%{version}
+%setup -q -n pidgin-lwqq
 
 %build
 mkdir build

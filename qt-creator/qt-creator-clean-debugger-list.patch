@@ -1,0 +1,17 @@
+diff -Nur qt-creator-opensource-src-3.5.0/src/plugins/debugger/debuggeritemmanager.cpp qt-creator-opensource-src-3.5.0n/src/plugins/debugger/debuggeritemmanager.cpp
+--- qt-creator-opensource-src-3.5.0/src/plugins/debugger/debuggeritemmanager.cpp	2015-08-18 18:02:51.000000000 +0800
++++ qt-creator-opensource-src-3.5.0n/src/plugins/debugger/debuggeritemmanager.cpp	2015-08-21 19:43:04.059730348 +0800
+@@ -199,13 +199,8 @@
+ void DebuggerItemManager::autoDetectGdbOrLldbDebuggers()
+ {
+     QStringList filters;
+-    filters.append(QLatin1String("gdb-i686-pc-mingw32"));
+-    filters.append(QLatin1String("gdb-i686-pc-mingw32.exe"));
+     filters.append(QLatin1String("gdb"));
+-    filters.append(QLatin1String("gdb.exe"));
+     filters.append(QLatin1String("lldb"));
+-    filters.append(QLatin1String("lldb.exe"));
+-    filters.append(QLatin1String("lldb-*"));
+ 
+ //    DebuggerItem result;
+ //    result.setAutoDetected(true);

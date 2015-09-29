@@ -1,20 +1,20 @@
 Name:       libwebqq		
-Version:	0.6.0
+Version:	0.6.1
 Release:	1
 Summary:	WebQQ protocol library
 
 License:    GPL	
 URL:	    https://github.com/xiehuc/lwqq	
-Source0:	https://github.com/xiehuc/lwqq/archive/v%{version}.tar.gz
+#git clone https://github.com/xiehuc/lwqq.git
+Source0: lwqq.tar.gz
 BuildRequires: mozjs17-devel zlib-devel libcurl-devel sqlite-devel
-BuildRequires: libuv-devel
+BuildRequires: libev-devel
 
 %description
 WebQQ protocol library
 
 %package        devel
 Summary:        Development files for %{name}
-Group:          Development/Libraries
 Requires:       %{name} = %{version}-%{release}
 
 %description    devel
@@ -22,12 +22,12 @@ The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
 %prep
-%setup -q -n lwqq-%{version}
+%setup -q -n lwqq
 
 %build
 mkdir build
 pushd build
-%cmake -DWITH_LIBUV=ON ..
+%cmake -DWITH_LIBEV=ON ..
 popd
 
 make %{?_smp_mflags} -C build
@@ -49,4 +49,5 @@ rm -rf %{buildroot}%{_libdir}/*.a
 %{_libdir}/pkgconfig/lwqq.pc
 
 %changelog
-
+* Sun Aug 24 2015 Cjacker <cjacker@foxmail.com>
+- update to git

@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Exec=qtcreator %F
+Exec=qtcreator -style fusion %F
 Name=Qt Creator
 X-KDE-StartupNotify=true
 Icon=QtProject-qtcreator

@@ -1,21 +1,27 @@
 Summary: Multiprotocol IM client
 Name:pidgin
 Version: 2.10.11
-Release: 3
+Release: 4 
 License:GPL
-Group:Applications/Internet
 URL:    http://pidgin.im/
 Source:%{name}-%{version}.tar.bz2
 BuildRequires: NetworkManager-devel
 BuildRequires: libidn-devel
-
+BuildRequires: ncurses-devel
+BuildRequires: glib2-devel dbus-devel
+BuildRequires: python-devel
+BuildRequires: libxml2-devel
+BuildRequires: nss-devel nspr-devel
+BuildRequires: dbus-glib-devel
+BuildRequires: libX11-devel libSM-devel libXScrnSaver-devel libICE-devel libXext-devel gtk2-devel fontconfig-devel freetype-devel pango-devel
+BuildRequires: glibc-devel
+ 
 Requires: libpurple
 %description
 Multiprotocol IM client
 
 %package devel
 Summary: Development headers for pidgin plugin development. 
-Group: Development/Libraries
 Requires: libpurple-devel = %{version}
 
 %description devel
@@ -23,21 +29,18 @@ Requires: libpurple-devel = %{version}
 
 %package -n libpurple-tools
 Summary: Demo tools from libpurple library.
-Group:Applications/Internet
 Requires: libpurple = %{version}
 %description -n libpurple-tools
 %{summary}
 
 %package -n libpurple 
 Summary: Runtime libraries for Pidgin IM client.
-Group:  System Environment/Libraries 
 
 %description -n libpurple 
 %{summary}
 
 %package -n libpurple-devel
 Summary: Headers and libraries for IM client development.  
-Group: Development/Libraries
 Requires: libpurple = %{version}
 
 %description -n libpurple-devel
@@ -45,7 +48,6 @@ Requires: libpurple = %{version}
 
 %package -n finch 
 Summary: console frontend to libpurple
-Group:Applications/Internet
 Requires: libgnt = %{version}
 
 %description -n finch
@@ -53,7 +55,6 @@ Requires: libgnt = %{version}
 
 %package -n finch-devel
 Summary: Headers to console frontend IM client plugin development
-Group:Applications/Internet
 Requires: libgnt-devel = %{version}
 
 %description -n finch-devel
@@ -62,7 +63,6 @@ Requires: libgnt-devel = %{version}
 
 %package -n libgnt 
 Summary: Runtime library for console frontend of libpurple
-Group: System Environment/Libraries
 Requires: libpurple = %{version}
 
 %description -n libgnt 
@@ -70,7 +70,6 @@ Requires: libpurple = %{version}
 
 %package -n libgnt-devel
 Summary: Headers and libraries for Console IM client development.  
-Group: System Environment/Libraries
 Requires: libpurple-devel = %{version}
 
 %description -n libgnt-devel

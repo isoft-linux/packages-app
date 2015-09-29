@@ -3,7 +3,7 @@
 %define desktop_file_utils_version 0.9
 %define firefox_app_id \{ec8030f7-c20a-464f-9b0e-13a3a9e97384\}
 
-%define version_internal    39.0
+%define version_internal    41.0 
 %define firefoxdir 		%{_libdir}/firefox
 
 Summary:        Mozilla Firefox Web browser
@@ -13,7 +13,7 @@ Release:        12
 URL:            http://www.mozilla.org/projects/firefox/
 License:        MPLv1.1 or GPLv2+ or LGPLv2+
 Group:          Applications/Internet
-Source0:        firefox-%{version_internal}.source.tar.bz2 
+Source0:        firefox-%{version_internal}.source.tar.xz
 
 Source10:       firefox-mozconfig
 
@@ -26,7 +26,7 @@ Source100:      find-external-requires
 Patch0:         firefox-install-dir.patch
 
 Patch1:         rhbz-966424.patch
-#hg clone http://www.rosenauer.org/hg/mozilla/
+#hg clone http://www.rosenauer.org/hg/mozilla/ -r firefox41
 
 Source200: kde.js
 Patch10: firefox-branded-icons.patch
@@ -36,6 +36,7 @@ Patch13: mozilla-kde.patch
 Patch14: mozilla-language.patch
 Patch15: mozilla-nongnome-proxies.patch
 Patch16: toolkit-download-folder.patch
+Patch17: mozilla-icu-strncat.patch
 
 
 BuildRequires:  desktop-file-utils
@@ -73,6 +74,7 @@ cd mozilla-release
 %patch14 -p1
 %patch15 -p1
 %patch16 -p1
+%patch17 -p1
 
 rm  -rf .mozconfig
 cp %{SOURCE10} .mozconfig
@@ -172,6 +174,12 @@ fi
 %{_datadir}/icons/hicolor/*/apps/firefox.png
 
 %changelog
+* Fri Sep 25 2015 Cjacker <cjacker@foxmail.com>
+- update to 41.0
+
+* Wed Aug 12 2015 Cjacker <cjacker@foxmail.com>
+- update 40.0
+
 * Mon Jul 20 2015 Cjacker <cjacker@foxmail.com>
 - disable system-cairo in mozconfig, avoid flash plugin blink problem.
 
