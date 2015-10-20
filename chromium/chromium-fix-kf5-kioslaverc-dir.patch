@@ -1,0 +1,17 @@
+--- chromium-45.0.2454.99.orig/net/proxy/proxy_config_service_linux.cc	2015-08-23 03:01:56.000000000 +0800
++++ chromium-45.0.2454.99/net/proxy/proxy_config_service_linux.cc	2015-09-26 19:42:39.504468802 +0800
+@@ -873,7 +873,13 @@
+ 
+     // Derive the location of the kde config dir from the environment.
+     std::string home;
+-    if (env_var_getter->GetVar("KDEHOME", &home) && !home.empty()) {
++    std::string kdeversion;
++
++    if (env_var_getter->GetVar("KDE_SESSION_VERSION", &kdeversion) && !kdeversion.empty() && kdeversion == "5") {
++      if(!env_var_getter->GetVar(base::env_vars::kHome, &home))
++        return;
++      kde_config_dir_ = base::FilePath(home).Append(".config"); 
++    } else if (env_var_getter->GetVar("KDEHOME", &home) && !home.empty()) {
+       // $KDEHOME is set. Use it unconditionally.
+       kde_config_dir_ = KDEHomeToConfigPath(base::FilePath(home));
+     } else {

@@ -1,6 +1,6 @@
 Name:           pavucontrol
 Version:        3.0
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Volume control for PulseAudio
 
 Group:          Applications/Multimedia
@@ -25,6 +25,8 @@ of each playback stream separately.
 %setup -q
 
 %build
+export CXXFLAGS="-std=c++11"
+
 %configure
 make V=1 %{?_smp_mflags}
 
@@ -37,6 +39,9 @@ rm $RPM_BUILD_ROOT/usr/share/doc/pavucontrol/README.html
 rm $RPM_BUILD_ROOT/usr/share/doc/pavucontrol/style.css
 
 %find_lang %{name}
+
+#hide menu item
+echo "NoDisplay=true" >> $RPM_BUILD_ROOT%{_datadir}/applications/pavucontrol.desktop
 
 %check
 desktop-file-validate $RPM_BUILD_ROOT%{_datadir}/applications/pavucontrol.desktop

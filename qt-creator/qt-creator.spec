@@ -1,5 +1,5 @@
 Name: qt-creator
-Version: 3.5.0
+Version: 3.5.1
 Release: 3 
 Summary: Lightweight and cross-platform IDE for Qt
 License: LGPLv2 with exceptions
@@ -81,6 +81,9 @@ fi
 %{_docdir}/qtcreator
 
 %changelog
+* Sat Oct 17 2015 Cjacker <cjacker@foxmail.com>
+- update to 3.5.1
+
 * Fri Aug 21 2015 Cjacker <cjacker@foxmail.com>
 - update to 3.5.0
 - add -style fusion to desktop file to avoid crash, see: https://bugs.kde.org/show_bug.cgi?id=347524

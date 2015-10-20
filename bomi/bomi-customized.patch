@@ -1,0 +1,55 @@
+--- bomi-0.9.11n/src/bomi/pref/pref.hpp	2015-10-15 21:33:45.501615820 +0800
++++ bomi-0.9.11/src/bomi/pref/pref.hpp	2015-10-15 21:35:47.962349746 +0800
+@@ -113,7 +113,7 @@
+     P0(OsdStyle, sub_style, {})
+     P0(bool, sub_prefer_external, true)
+ 
+-    P0(bool, enable_system_tray, true)
++    P0(bool, enable_system_tray, false)
+     P0(bool, hide_rather_close, true)
+     P0(MouseActionMap, mouse_action_map, defaultMouseActionMap())
+     P0(bool, invert_wheel, false)
+--- bomi-0.9.11n/src/bomi/pref/pref.cpp	2015-10-15 21:33:45.501615820 +0800
++++ bomi-0.9.11/src/bomi/pref/pref.cpp	2015-10-15 21:33:58.583713917 +0800
+@@ -147,7 +147,7 @@
+ {
+     QString name = QString::fromLatin1(BOMI_DEFAULT_SKIN);
+     if (name.isEmpty())
+-        name = u"Tethys"_q;
++        name = u"Breeze"_q;
+     return name;
+ }
+ 
+--- bomi-0.9.11n/src/bomi/quick/playlistthemeobject.hpp	2015-10-15 21:33:45.502615828 +0800
++++ bomi-0.9.11/src/bomi/quick/playlistthemeobject.hpp	2015-10-15 21:36:43.273559519 +0800
+@@ -9,7 +9,7 @@
+     bool showOnMouseMoved = true;
+     bool showLocationsInPlaylist = true;
+     bool showToolOnMouseOverEdge = false;
+-    bool showPreviewOnMouseOverSeekBar = false;
++    bool showPreviewOnMouseOverSeekBar = true;
+     bool showKeyframeForPreview = true;
+     bool showMediaTitleForLocalFilesInHistory = false;
+     bool showMediaTitleForUrlsInHistory = true;
+--- bomi-0.9.11n/src/bomi/player/appstate.cpp	2015-10-15 21:33:45.500615813 +0800
++++ bomi-0.9.11/src/bomi/player/appstate.cpp	2015-10-15 21:53:01.808789050 +0800
+@@ -84,7 +84,7 @@
+         const int y = screen.height() * p.y();
+         w->setGeometry(QRect({x, y}, s));
+     } else
+-        w->resize(400, 300);
++        w->resize(640, 400);
+ }
+ 
+ 
+--- bomi-0.9.11n/src/bomi/player/appstate.hpp	2015-10-15 21:33:45.500615813 +0800
++++ bomi-0.9.11/src/bomi/player/appstate.hpp	2015-10-15 22:13:28.761297938 +0800
+@@ -39,7 +39,7 @@
+     // misc
+     bool ask_system_tray = true, use_interpolator_down = false;
+     FramebufferObjectFormat fbo_format = FramebufferObjectFormat::Auto;
+-    Visualization visualization = Visualization::Off;
++    Visualization visualization = Visualization::Bar;
+     QString dvd_device, bluray_device;
+ 
+     auto updateWindowGeometry(const MainWindow *w) -> void;

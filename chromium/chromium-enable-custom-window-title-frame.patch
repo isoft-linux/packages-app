@@ -1,0 +1,12 @@
+--- chromium-45.0.2454.85.orig/ui/base/x/x11_util.cc	2015-09-02 04:10:44.000000000 +0800
++++ chromium-45.0.2454.85/ui/base/x/x11_util.cc	2015-09-19 19:26:14.527146484 +0800
+@@ -1058,8 +1058,7 @@
+ 
+   // Handle a few more window managers that don't get along well with custom
+   // frames.
+-  if (wm == WM_ICE_WM ||
+-      wm == WM_KWIN)
++  if (wm == WM_ICE_WM)
+     return false;
+ 
+   // For everything else, use custom frames.

@@ -1,6 +1,6 @@
 Name: isoft-update-client
-Version: 0.1.0
-Release: 1%{?dist}
+Version: 0.2.0
+Release: 3%{?dist}
 Summary: iSOFT Update Client
 
 License: GPLv2 or GPLv3
@@ -30,6 +30,8 @@ BuildRequires: kf5-ki18n-devel
 
 Requires: kf5-filesystem
 Requires: systemd 
+Requires: os-release
+Requires: os-update
 
 Requires(post): systemd-units
 Requires(preun): systemd-units
@@ -76,7 +78,6 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 %{_unitdir}/isoft-update-daemon.service
 %{_bindir}/isoft-update-daemon
 %{_bindir}/isoft-update-console
-%{_bindir}/isoft-update-server-tool
 # kcm
 %{_kf5_qtplugindir}/kcm_isoftupdate.so
 %{_kf5_datadir}/kservices5/kcm_isoftupdate.desktop
@@ -92,4 +93,12 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 
 
 %changelog
+* Tue Oct 20 2015 Cjacker <cjacker@foxmail.com>
+- add requires to os-release/os-update
 
+* Fri Oct 16 2015 Leslie Zhai <xiang.zhai@i-soft.com.cn>
+- updates.xml provided by other package.
+
+* Wed Oct 14 2015 Leslie Zhai <xiang.zhai@i-soft.com.cn>
+- Fix daemon issue.
+- Update plasmoid UI.

@@ -1,0 +1,22 @@
+[Desktop Entry]
+Name=Sogou Pinyin
+Name[zh_CN]=搜狗拼音
+GenericName=Sogou Pinyin Input Method
+GenericName[zh_CN]=搜狗拼音输入法
+Comment=a popular pinyin input method
+Comment[zh_CN]=20 年稳定专业的输入法
+MimeType=application/x-sogouskin;application/x-scel;
+Keywords=ime;imf;input;
+Exec=sogou-qimpanel %U
+Icon=fcitx-sogoupinyin
+Terminal=false
+Type=Application
+Categories=Utility;
+StartupNotify=false
+X-GNOME-Autostart-Phase=Applications
+X-GNOME-Autostart-Notify=false
+X-GNOME-Autostart-Delay=2
+X-GNOME-AutoRestart=true
+X-KDE-autostart-phase=1
+X-KDE-autostart-after=panel
+

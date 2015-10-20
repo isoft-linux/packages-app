@@ -1,0 +1,36 @@
+diff -Nur bomi-0.9.11/bomi.desktop bomi-0.9.11new/bomi.desktop
+--- bomi-0.9.11/bomi.desktop	2015-05-20 17:31:58.000000000 +0800
++++ bomi-0.9.11new/bomi.desktop	2015-10-15 22:27:47.018474516 +0800
+@@ -6,12 +6,15 @@
+ Name[es]=bomi
+ Name[de]=bomi
+ Name[ko]=보미
++Name[zh_CN]=bomi播放器
+ GenericName[pl]=Odtwarzacz filmów
+ GenericName[es]=Reproductor multimédia
+ GenericName[de]=Mediaplayer
++GenericName[zh_CN]=媒体播放器
+ Comment[pl]=Odtwarzaczaj filmy z bomi
+ Comment[es]=Reproduzca vídeos
+ Comment[de]=Spielt Medien ab
++Comment[zh_CN]=播放媒体文件
+ Exec=bomi --wake %u
+ Icon=bomi
+ StartupNotify=true
+@@ -19,4 +22,4 @@
+ Type=Application
+ Categories=Qt;AudioVideo;Player;Video;Audio;
+ MimeType=inode/directory;application/ogg;application/x-ogg;application/sdp;application/smil;application/x-smil;application/streamingmedia;application/x-streamingmedia;application/vnd.rn-realmedia;application/vnd.rn-realmedia-vbr;audio/aac;audio/x-aac;audio/m4a;audio/x-m4a;audio/mp1;audio/x-mp1;audio/mp2;audio/x-mp2;audio/mp3;audio/x-mp3;audio/mpeg;audio/x-mpeg;audio/mpegurl;audio/x-mpegurl;audio/mpg;audio/x-mpg;audio/rn-mpeg;audio/ogg;audio/scpls;audio/x-scpls;audio/vnd.rn-realaudio;audio/wav;audio/x-pn-windows-pcm;audio/x-realaudio;audio/x-pn-realaudio;audio/x-ms-wma;audio/x-pls;audio/x-wav;video/mpeg;video/x-mpeg;video/x-mpeg2;video/mp4;video/msvideo;video/x-msvideo;video/ogg;video/quicktime;video/vnd.rn-realvideo;video/x-ms-afs;video/x-ms-asf;video/x-ms-wmv;video/x-ms-wmx;video/x-ms-wvxvideo;video/x-avi;video/x-fli;video/x-flv;video/x-theora;video/x-matroska;video/webm;audio/x-flac;audio/x-vorbis+ogg;video/x-ogm+ogg;audio/x-shorten;audio/x-ape;audio/x-wavpack;audio/x-tta;audio/AMR;audio/ac3;video/mp2t;audio/flac;
+-X-KDE-Protocols=ftp,http,https,mms,rtmp,rtsp,sftp,smb
+\ No newline at end of file
++X-KDE-Protocols=ftp,http,https,mms,rtmp,rtsp,sftp,smb
+diff -Nur bomi-0.9.11/bomi-opendvd.desktop bomi-0.9.11new/bomi-opendvd.desktop
+--- bomi-0.9.11/bomi-opendvd.desktop	2015-05-20 17:31:58.000000000 +0800
++++ bomi-0.9.11new/bomi-opendvd.desktop	2015-10-15 22:26:31.947652991 +0800
+@@ -8,5 +8,6 @@
+ Name[pl]=Otwórz Video DVD z bomi
+ Name[es]=Abrir DVD de vídeo con bomi
+ Name[de]=Öffne Video-DVD mit bomi
++Name[zh_CN]=播放DVD
+ Exec=bomi --wake dvd://%d
+ Icon=bomi

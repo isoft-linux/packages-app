@@ -1,0 +1,39 @@
+diff -Nur gnome-desktop-3.12.2/libgnome-desktop/gnome-wall-clock.c gnome-desktop-3.12.2n/libgnome-desktop/gnome-wall-clock.c
+--- gnome-desktop-3.12.2/libgnome-desktop/gnome-wall-clock.c	2014-05-01 00:32:12.000000000 +0800
++++ gnome-desktop-3.12.2n/libgnome-desktop/gnome-wall-clock.c	2014-07-14 12:23:53.847171270 +0800
+@@ -287,13 +287,13 @@
+ 		if (show_full_date) {
+ 			/* Translators: This is the time format with full date used
+ 			   in 24-hour mode. */
+-			format_string = show_seconds ? _("%a %b %e, %R:%S")
+-				: _("%a %b %e, %R");
++			format_string = show_seconds ? _("%A %b %e, %R:%S")
++				: _("%A %b %e, %R");
+ 		} else if (show_weekday) {
+ 			/* Translators: This is the time format with day used
+ 			   in 24-hour mode. */
+-			format_string = show_seconds ? _("%a %R:%S")
+-				: _("%a %R");
++			format_string = show_seconds ? _("%A %R:%S")
++				: _("%A %R");
+ 		} else {
+ 			/* Translators: This is the time format without date used
+ 			   in 24-hour mode. */
+@@ -303,13 +303,13 @@
+ 		if (show_full_date) {
+ 			/* Translators: This is a time format with full date used
+ 			   for AM/PM. */
+-			format_string = show_seconds ? _("%a %b %e, %l:%M:%S %p")
+-				: _("%a %b %e, %l:%M %p");
++			format_string = show_seconds ? _("%A %b %e, %l:%M:%S %p")
++				: _("%A %b %e, %l:%M %p");
+ 		} else if (show_weekday) {
+ 			/* Translators: This is a time format with day used
+ 			   for AM/PM. */
+-			format_string = show_seconds ? _("%a %l:%M:%S %p")
+-				: _("%a %l:%M %p");
++			format_string = show_seconds ? _("%A %l:%M:%S %p")
++				: _("%A %l:%M %p");
+ 		} else {
+ 			/* Translators: This is a time format without date used
+ 			   for AM/PM. */

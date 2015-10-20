@@ -1,0 +1,35 @@
+Index: opencc-0.3.0/src/CMakeLists.txt
+===================================================================
+--- opencc-0.3.0.orig/src/CMakeLists.txt
++++ opencc-0.3.0/src/CMakeLists.txt
+@@ -99,7 +99,7 @@ install(
+ 	TARGETS
+ 		${LIBOPENCC_TARGET}
+ 	LIBRARY DESTINATION
+-		${DIR_LIBRARY}
++		${LIB_INSTALL_DIR}
+ )
+ endif (NOT WIN32)
+ 
+@@ -107,7 +107,7 @@ install(
+ 	TARGETS
+ 		${LIBOPENCC_STATIC_TARGET}
+ 	ARCHIVE DESTINATION
+-		${DIR_LIBRARY_STATIC}
++		${LIB_INSTALL_DIR}
+ )
+ 
+ install(
+Index: opencc-0.3.0/CMakeLists.txt
+===================================================================
+--- opencc-0.3.0.orig/CMakeLists.txt
++++ opencc-0.3.0/CMakeLists.txt
+@@ -102,7 +102,7 @@ install(
+ 	FILES
+ 		${CMAKE_BINARY_DIR}/opencc.pc
+ 	DESTINATION
+-		${DIR_LIBRARY}/pkgconfig
++		${LIB_INSTALL_DIR}/pkgconfig
+ )
+ 
+ ######## Subdirectories

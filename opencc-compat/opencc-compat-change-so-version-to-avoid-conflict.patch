@@ -1,0 +1,23 @@
+diff -Nur opencc-0.4.3/src/CMakeLists.txt opencc-0.4.3n/src/CMakeLists.txt
+--- opencc-0.4.3/src/CMakeLists.txt	2015-10-17 00:03:33.381706290 +0800
++++ opencc-0.4.3n/src/CMakeLists.txt	2015-10-17 00:06:37.007049297 +0800
+@@ -64,7 +64,7 @@
+ 		OUTPUT_NAME
+ 			opencc
+ 		VERSION
+-			1.0.0
++			0.4.3	
+ 		SOVERSION
+ 			1
+ )
+--- opencc-0.4.3n/CMakeLists.txt	2015-10-17 00:04:10.701567130 +0800
++++ opencc-0.4.3/CMakeLists.txt	2015-10-17 00:08:51.692604430 +0800
+@@ -96,7 +96,7 @@
+ 	set (DIR_ETC ${SYSCONF_INSTALL_DIR})
+ endif (DEFINED SYSCONF_INSTALL_DIR)
+ 
+-set (DIR_SHARE_OPENCC ${DIR_SHARE}/opencc)
++set (DIR_SHARE_OPENCC ${DIR_SHARE}/opencc-compat)
+ set (DIR_SHARE_LOCALE ${DIR_SHARE}/locale)
+ 
+ ######## Configuration
