@@ -1,6 +1,6 @@
 Name: ezviewer 
 Version: 3.4
-Release: 2.git
+Release: 4.git
 Summary: The default image viewer
 
 License: GPLv2
@@ -37,3 +37,4 @@ install -m 0644 %{SOURCE1}  %{buildroot}%{_datadir}/applications/
 %changelog
 * Tue Oct 20 2015 Cjacker <cjacker@foxmail.com>
 - initial build.
+- add image/webp, image/x-icns to desktop file.
