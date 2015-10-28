@@ -1,6 +1,6 @@
 Name: kcmlocale
 Version: 1.0
-Release: 1
+Release: 2
 Summary: Locale setting tool for plasma desktop
 
 License: GPLv3+
@@ -39,6 +39,9 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 %{_kf5_datadir}/kservices5/*.desktop
 
 %changelog
+* Sun Oct 25 2015 Cjacker <cjacker@foxmail.com> - 1.0-2
+- Rebuild for new 4.0 release
+
 * Fri Oct 16 2015 Cjacker <cjacker@foxmail.com>
 - initial created.
 

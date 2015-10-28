@@ -1,6 +1,6 @@
 Name:		sendviakmail
 Version:	0.1
-Release:	1
+Release:	2
 Summary:	Dolphin servicemenu and kmail2thunderbird wrapper.
 
 License:    GPL	
@@ -26,4 +26,7 @@ make install DESTDIR=%{buildroot}
 %{_datadir}/kservices5/ServiceMenus/*
 
 %changelog
+* Sun Oct 25 2015 Cjacker <cjacker@foxmail.com> - 0.1-2
+- Rebuild for new 4.0 release
+
 

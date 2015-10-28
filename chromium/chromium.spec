@@ -1,9 +1,8 @@
 Name:       chromium
 Version:    46.0.2490.71
-Release:    2%{?dist}
+Release:    3%{?dist}
 Summary:    An open-source project that aims to build a safer, faster, and more stable browser
 
-Group:      Applications/Internet
 License:    BSD and LGPLv2+
 URL:        https://www.chromium.org
 Source0:    https://commondatastorage.googleapis.com/chromium-browser-official/chromium-%{version}.tar.xz
@@ -189,6 +188,9 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 
 
 %changelog
+* Sun Oct 25 2015 Cjacker <cjacker@foxmail.com> - 46.0.2490.71-3
+- Rebuild for new 4.0 release
+
 * Wed Oct 14 2015 Cjacker <cjacker@foxmail.com>
 - update to 46.0.2490.71
 

@@ -1,6 +1,6 @@
 Name:		kio-afc
 Version:    0.1	
-Release:	1
+Release:	2
 Summary:	kio slave implementation wrapping the AFC protocol
 
 License:    GPL	
@@ -36,4 +36,7 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 %{_kf5_datadir}/kservices5/*.protocol
 %{_datadir}/remoteview/afc-network.desktop
 %changelog
+* Sun Oct 25 2015 Cjacker <cjacker@foxmail.com> - 0.1-2
+- Rebuild for new 4.0 release
+
 

@@ -1,6 +1,6 @@
 Name:           kcm-pointing-devices
 Version:        0.1 
-Release:        2
+Release:        3
 Summary:        User accounts manager for plasma workspace 
 
 License:        GPLv3+
@@ -42,6 +42,9 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 %{_kf5_datadir}/kpackage/kcms/kcm_pointingdevices
 
 %changelog
+* Sun Oct 25 2015 Cjacker <cjacker@foxmail.com> - 0.1-3
+- Rebuild for new 4.0 release
+
 * Wed Aug 26 2015 Cjacker <cjacker@foxmail.com>
 - update to 5.4.0
 

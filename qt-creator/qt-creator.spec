@@ -1,6 +1,8 @@
+%global _python_bytecompile_errors_terminate_build 0
+
 Name: qt-creator
 Version: 3.5.1
-Release: 3 
+Release: 4 
 Summary: Lightweight and cross-platform IDE for Qt
 License: LGPLv2 with exceptions
 URL: http://www.qtsoftware.com/developer/qt-creator
@@ -57,7 +59,6 @@ desktop-file-install                                    \
 --dir=%{buildroot}%{_datadir}/applications              \
 %{SOURCE1}
 
-rpmclean
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -81,6 +82,9 @@ fi
 %{_docdir}/qtcreator
 
 %changelog
+* Sun Oct 25 2015 Cjacker <cjacker@foxmail.com> - 3.5.1-4
+- Rebuild for new 4.0 release
+
 * Sat Oct 17 2015 Cjacker <cjacker@foxmail.com>
 - update to 3.5.1
 

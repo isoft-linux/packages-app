@@ -1,14 +1,11 @@
-Name: kdenetwork-filesharing
-Version: 15.08.1
+Name: knetshare
+Version: 0.1.0
 Release: 1%{?dist}
 Summary: netshare for KF5
 
 License: GPLv2 or GPLv3
-URL: https://projects.kde.org/projects/kde/kdenetwork/kdenetwork-filesharing
-Source0: %{name}-%{version}.tar.xz
-
-# Migrated to KF5
-Patch1: 0001-migrated-to-kf5.patch
+URL: http://git.isoft.zhcn.cc/zhaixiang/knetshare
+Source0: %{name}-%{version}.tar.bz2
 
 BuildRequires: extra-cmake-modules
 BuildRequires: kf5-rpm-macros
@@ -43,8 +40,9 @@ make %{?_smp_mflags} -C %{_target_platform}
 %install
 make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 
+%find_lang knetshare
 
-%files
+%files -f knetshare.lang
 %{_kf5_qtplugindir}/sambausershareplugin.so
 %{_kf5_datadir}/kservices5/sambausershareplugin.desktop
 

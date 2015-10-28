@@ -1,14 +1,16 @@
 Name: app-default-settings
 Version: 0.1
-Release: 3 
+Release: 4 
 Summary: Default settings for some applications
 
-License: BSD 
+License: Public Domain 
 #google chrome preferences for hide system titlebar by default.
 Source0: Preferences 
 
 #sogou pinyin default config files to hide statusBar by default and disable SwitchCEKey.
 Source1: sogouEnv.ini
+
+BuildArch: noarch
 
 %description
 Default settings for some applications, will apply to every user when user account created.
@@ -28,6 +30,9 @@ install -m 0644 %{SOURCE1} %{buildroot}/etc/skel/.config/SogouPY/
 /etc/skel/.config
 
 %changelog
+* Sun Oct 25 2015 Cjacker <cjacker@foxmail.com> - 0.1-4
+- Rebuild for new 4.0 release
+
 * Tue Oct 13 2015 Cjacker <cjacker@foxmail.com>
 - add default settings for sogou pinyin:
 - 1, hide statusbar by default.

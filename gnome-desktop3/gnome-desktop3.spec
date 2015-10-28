@@ -7,7 +7,7 @@
 Summary: Shared code among gnome-panel, gnome-session, nautilus, etc
 Name: gnome-desktop3
 Version: 3.18.1
-Release: 1
+Release: 2
 URL: http://www.gnome.org
 Source0: http://download.gnome.org/sources/gnome-desktop/3.13/gnome-desktop-%{version}.tar.xz
 Patch0: 0001-default-input-sources-Switch-ja_JP-default-to-ibus-k.patch
@@ -88,6 +88,9 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 %doc %{_datadir}/gtk-doc/html/gnome-desktop3/
 
 %changelog
+* Sun Oct 25 2015 Cjacker <cjacker@foxmail.com> - 3.18.1-2
+- Rebuild for new 4.0 release
+
 * Sat Oct 17 2015 Cjacker <cjacker@foxmail.com>
 - update to 3.18.1
 

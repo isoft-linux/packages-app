@@ -1,6 +1,6 @@
 Name:           kcm-useraccount
 Version:        5.4.0
-Release:        4 
+Release:        5 
 Summary:        User accounts manager for plasma workspace 
 
 License:        GPLv3+
@@ -9,15 +9,16 @@ Source0:        kuseraccount-%{version}.tar.bz2
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  gettext
-BuildRequires:  boost-devel
-# we need the unified libsystemd.so, which was introduced in systemd 209
-BuildRequires:  systemd-devel >= 209
+BuildRequires:  kf5-rpm-macros
 BuildRequires:  qt5-qtbase-devel
 BuildRequires:  kf5-kconfigwidgets-devel
 BuildRequires:  kf5-kcoreaddons-devel
 BuildRequires:  kf5-ki18n-devel
 BuildRequires:  kf5-kauth-devel
-BuildRequires:  kf5-rpm-macros
+BuildRequires:  libpwquality-devel
+BuildRequires:  polkit-qt5-1-devel
+BuildRequires:  kf5-kdelibs4support-devel
+BuildRequires:  kf5-kwallet-devel
 BuildRequires: qt5-qtaccountsservice-devel >= 0.6.0
 Requires: qt5-qtaccountsservice >= 0.6.0
 
@@ -46,6 +47,9 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 %{_kf5_datadir}/kservices5/kcm_useraccount.desktop
 
 %changelog
+* Sun Oct 25 2015 Cjacker <cjacker@foxmail.com> - 5.4.0-5
+- Rebuild for new 4.0 release
+
 * Wed Aug 26 2015 Cjacker <cjacker@foxmail.com>
 - update to 5.4.0
 

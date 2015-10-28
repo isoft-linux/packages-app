@@ -1,6 +1,6 @@
 Name: isoft-update-client
 Version: 0.2.0
-Release: 3%{?dist}
+Release: 4%{?dist}
 Summary: iSOFT Update Client
 
 License: GPLv2 or GPLv3
@@ -93,6 +93,9 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 
 
 %changelog
+* Sun Oct 25 2015 Cjacker <cjacker@foxmail.com> - 0.2.0-4
+- Rebuild for new 4.0 release
+
 * Tue Oct 20 2015 Cjacker <cjacker@foxmail.com>
 - add requires to os-release/os-update
 

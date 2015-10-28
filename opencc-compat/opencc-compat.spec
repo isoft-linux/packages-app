@@ -1,6 +1,8 @@
+%define debug_package %{nil}
+
 Name:       opencc-compat
 Version:    0.4.3
-Release:    2%{?dist}
+Release:    3%{?dist}
 Summary:    Compatible libraries for Simplified-Traditional Chinese Conversion
 License:    ASL 2.0
 URL:        http://code.google.com/p/opencc/
@@ -37,6 +39,9 @@ rm -rf $RPM_BUILD_ROOT%{_mandir}
 rm -rf $RPM_BUILD_ROOT%{_datadir}/locale
 rm -rf $RPM_BUILD_ROOT%{_datadir}/opencc-compat/doc
 
+#we do not need debug package, and should strip shared library.
+strip --strip-unneeded %{buildroot}%{_libdir}/lib*.so.*
+
 %check
 ctest
 
@@ -48,6 +53,9 @@ ctest
 %{_datadir}/opencc-compat
 
 %changelog
+* Sun Oct 25 2015 Cjacker <cjacker@foxmail.com> - 0.4.3-3
+- Rebuild for new 4.0 release
+
 * Sat Oct 17 2015 Cjacker <cjacker@foxmail.com>
 - initial build to support sogoupinyin.
 - change datadir and lib version to avoid conflict with opencc 1.0

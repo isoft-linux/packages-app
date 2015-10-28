@@ -1,6 +1,6 @@
 Name:		kf5-kmozillahelper
 Version:	0.6.4
-Release:	1.git
+Release:	2.git
 Summary:    Mozilla kde integration	
 
 License:    GPL	
@@ -44,5 +44,8 @@ popd
 %{_datadir}/kmozillahelper/kmozillahelper.notifyrc
 
 %changelog
+* Sun Oct 25 2015 Cjacker <cjacker@foxmail.com> - 0.6.4-2.git
+- Rebuild for new 4.0 release
+
 * Sun Jul 19 2015 Cjacker <cjacker@foxmail.com>
 - add patch1 to fix build

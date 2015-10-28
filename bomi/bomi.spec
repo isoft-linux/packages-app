@@ -1,9 +1,8 @@
 Name:       bomi
 Summary:    A multimedia player
 License:    GPLv2
-Group:      Applications/Multimedia
 Version:    0.9.11
-Release:    3%{?dist}
+Release:    4%{?dist}
 Url:        http://bomi.github.io/
 Source0:    https://github.com/xylosper/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 
@@ -83,6 +82,9 @@ xdg-icon-resource forceupdate --theme hicolor &> /dev/null
 %{_mandir}/man1/bomi.1.gz
 
 %changelog
+* Sun Oct 25 2015 Cjacker <cjacker@foxmail.com> - 0.9.11-4
+- Rebuild for new 4.0 release
+
 * Thu Oct 15 2015 Cjacker <cjacker@foxmail.com> - 0.9.11-2
 - set up default theme, window size and other settings.
 - enable Bar visulization when play audio.

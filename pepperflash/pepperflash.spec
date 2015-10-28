@@ -1,6 +1,10 @@
+#PepperFlash Plugin binary directly from google-chrome.
+
+%define debug_package %{nil}
+
 Name: pepperflash 
 Version: 19.0.0.185
-Release: 1
+Release: 2
 Summary: Flash plugin for chromium browser
 
 License: Commercial
@@ -28,6 +32,9 @@ install -m 0755 %{SOURCE1} %{buildroot}%{_sysconfdir}/profile.d/
 %{_sysconfdir}/profile.d/chromium-pepperflash.sh
 
 %changelog
+* Sun Oct 25 2015 Cjacker <cjacker@foxmail.com> - 19.0.0.185-2
+- Rebuild for new 4.0 release
+
 * Thu Sep 22 2015 Cjacker <cjacker@foxmail.com>
 - update to pepper flash from chrome 45.0.2454.99 
 

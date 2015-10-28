@@ -1,9 +1,8 @@
 Name:           pavucontrol
 Version:        3.0
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Volume control for PulseAudio
 
-Group:          Applications/Multimedia
 License:        GPLv2+
 URL:            http://freedesktop.org/software/pulseaudio/%{name}
 Source0:        http://freedesktop.org/software/pulseaudio/%{name}/%{name}-%{version}.tar.xz
@@ -54,3 +53,6 @@ desktop-file-validate $RPM_BUILD_ROOT%{_datadir}/applications/pavucontrol.deskto
 %{_datadir}/applications/pavucontrol.desktop
 
 %changelog
+* Sun Oct 25 2015 Cjacker <cjacker@foxmail.com> - 3.0-5
+- Rebuild for new 4.0 release
+

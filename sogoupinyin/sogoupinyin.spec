@@ -1,15 +1,15 @@
 %global debug_package %{nil}
+
 %define _xinitrcdir %{_sysconfdir}/X11/xinit/xinitrc.d
 
 Name: sogoupinyin
 Version: 2.0.0.0066 
-Release: 3%{?dist}
+Release: 4%{?dist}
 Summary: Sogou Pinyin input method
 Summary(zh_CN): 搜狗拼音输入法
 
 License: Proprietary and GPLv2
 URL:  http://pinyin.sogou.com/linux
-Group:  Applications/System
 Source0: http://download.ime.sogou.com/1422868314/%{name}_%{version}_amd64.deb
 #currently unused.
 Source1: 55-sogoupinyin.sh
@@ -214,6 +214,9 @@ fi
 
 
 %changelog
+* Sun Oct 25 2015 Cjacker <cjacker@foxmail.com> - 2.0.0.0066-4
+- Rebuild for new 4.0 release
+
 * Mon Oct 19 2015 Cjacker <cjacker@foxmail.com>
 - update to 2.0.0.0066
 

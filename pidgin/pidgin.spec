@@ -1,7 +1,7 @@
 Summary: Multiprotocol IM client
 Name:pidgin
 Version: 2.10.11
-Release: 4 
+Release: 5 
 License:GPL
 URL:    http://pidgin.im/
 Source:%{name}-%{version}.tar.bz2
@@ -99,7 +99,6 @@ make %{?_smp_mflags}
 make DESTDIR=$RPM_BUILD_ROOT install
 
 %find_lang pidgin
-rpmclean
 
 
 %post
@@ -186,3 +185,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libgnt.so*
 
 %changelog
+* Sun Oct 25 2015 Cjacker <cjacker@foxmail.com> - 2.10.11-5
+- Rebuild for new 4.0 release
+

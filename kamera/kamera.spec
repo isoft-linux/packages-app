@@ -1,7 +1,7 @@
 Name:    kamera
 Summary: Digital camera support for KDE 
 Version: 15.07.90
-Release: 2%{?dist}
+Release: 3%{?dist}
 
 License: GPLv2
 URL:     https://projects.kde.org/projects/kde/kdegraphics/kamera
@@ -61,3 +61,6 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 
 
 %changelog
+* Sun Oct 25 2015 Cjacker <cjacker@foxmail.com> - 15.07.90-3
+- Rebuild for new 4.0 release
+

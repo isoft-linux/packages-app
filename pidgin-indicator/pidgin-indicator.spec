@@ -1,9 +1,8 @@
 Name:           pidgin-indicator
 Version:        0.9
-Release:        1.2
+Release:        2.2
 Summary:        StatusNotifierItem tray icon plugin for Pidgin
 License:        GPL-2.0+
-Group:          Productivity/Networking/Instant Messenger
 Url:            https://github.com/philipl/pidgin-indicator
 Source:         https://github.com/philipl/%{name}/releases/download/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
@@ -57,3 +56,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/icons/hicolor/*/status/%{name}-nothing.png
 
 %changelog
+* Sun Oct 25 2015 Cjacker <cjacker@foxmail.com> - 0.9-2.2
+- Rebuild for new 4.0 release
+

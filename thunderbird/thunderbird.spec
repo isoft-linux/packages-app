@@ -1,10 +1,12 @@
+# we do not ship debug package of thunderbird.
+%define debug_package %{nil}
+
 Summary: Mozilla Thunderbird mail/newsgroup client
 Name: thunderbird
-Version: 38.2.0
-Release: 16 
+Version: 38.3.0
+Release: 17 
 URL: http://www.mozilla.org/projects/thunderbird/
 License: MPL
-Group:  Applications/Internet
 Source0: thunderbird-%{version}.source.tar.bz2
 Source1: thunderbird.desktop
 Source4: thunderbird-mozconfig
@@ -12,23 +14,52 @@ Source10:  thunderbird-vendor.js
  
 Source100: find-external-requires
 
+Source200: thunderbird-kde.js
+
 Patch0: thunderbird-install-dir.patch
 Patch1: thunderbird-freetype26.patch
 
-Source200: thunderbird-kde.js
 Patch10: thunderbird-mozilla-kde.patch
 Patch11: thunderbird-firefox-kde.patch
 Patch12: thunderbird-toolkit-download-folder.patch
 Patch13: thunderbird-mozilla-nongnome-proxies.patch 
 
-BuildRequires: libpng-devel, libjpeg-devel, gtk2-devel
-BuildRequires: zlib-devel, gzip, zip, unzip
-BuildRequires: freetype-devel
 BuildRequires:  nss-devel 
 BuildRequires:  nspr-devel
 BuildRequires:  hunspell-devel 
+BuildRequires:  nspr-devel
+BuildRequires:  nss-devel
+BuildRequires:  libpng-devel
+BuildRequires:  libjpeg-devel
+BuildRequires:  zip
+BuildRequires:  bzip2-devel
+BuildRequires:  zlib-devel
+BuildRequires:  libIDL-devel
+BuildRequires:  gtk2-devel
+BuildRequires:  krb5-devel
+BuildRequires:  pango-devel
+BuildRequires:  freetype-devel
+BuildRequires:  libXt-devel
+BuildRequires:  libXrender-devel
+BuildRequires:  hunspell-devel
+BuildRequires:  startup-notification-devel
+BuildRequires:  alsa-lib-devel
+BuildRequires:  libnotify-devel
+BuildRequires:  mesa-libGL-devel
+BuildRequires:  libcurl-devel
+BuildRequires:  libvpx-devel
+BuildRequires:  autoconf213
+BuildRequires:  pulseaudio-libs-devel
+BuildRequires:  sqlite-devel
+BuildRequires:  libffi-devel
+BuildRequires:  zlib-devel, gzip, zip, unzip
+BuildRequires: yasm
+
 Requires: nss
 Requires: nspr
+Requires: desktop-file-utils
+Requires: hunspell
+
 Obsoletes: MozillaThunderbird
 Provides: MozillaThunderbird = %{epoch}:%{version}
 
@@ -93,25 +124,26 @@ install -m 0644 %{SOURCE200} $RPM_BUILD_ROOT/%{_libdir}/thunderbird/defaults/pre
 
 #clean devel files
 rm -rf $RPM_BUILD_ROOT/usr/{include,lib/thunderbird-devel-*,share/idl}
-rpmclean
-
-%clean
-
-%post
-update-desktop-database &> /dev/null || :
-touch --no-create %{_datadir}/icons/hicolor
-if [ -x %{_bindir}/gtk-update-icon-cache ]; then
-  %{_bindir}/gtk-update-icon-cache --quiet %{_datadir}/icons/hicolor || :
-fi
 
 #===============================================================================
 
-%postun
+%post
+touch --no-create %{_datadir}/icons/hicolor || :
 update-desktop-database &> /dev/null || :
-touch --no-create %{_datadir}/icons/hicolor
+
+%posttrans
 if [ -x %{_bindir}/gtk-update-icon-cache ]; then
   %{_bindir}/gtk-update-icon-cache --quiet %{_datadir}/icons/hicolor || :
 fi
+
+%postun
+if [ $1 -eq 0 ] ; then
+    touch --no-create %{_datadir}/icons/hicolor &>/dev/null
+    if [ -x %{_bindir}/gtk-update-icon-cache ]; then
+      gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
+    fi
+fi
+update-desktop-database ||:
 
 %files
 %defattr(-,root,root,-)
@@ -120,6 +152,10 @@ fi
 %{_libdir}/thunderbird*
 
 %changelog
+* Sun Oct 25 2015 Cjacker <cjacker@foxmail.com> - 38.2.0-17
+- Update to 38.3.0
+- Rebuild for new 4.0 release
+
 * Tue Dec 10 2013 Cjacker <cjacker@gmail.com>
 - first build, prepare for the new release.
 
