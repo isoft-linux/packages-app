@@ -1,7 +1,7 @@
 Summary: Harddisk Partition Editor
 Name: gparted
-Version: 0.22.0
-Release: 3 
+Version: 0.24.0
+Release: 4 
 License: GPLv2+
 URL: http://www.gparted.org
 Source0: http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
@@ -131,6 +131,9 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 %{_mandir}/man8/gparted.*
 
 %changelog
+* Wed Oct 28 2015 Cjacker <cjacker@foxmail.com> - 0.24.0-4
+- Update
+
 * Sun Oct 25 2015 Cjacker <cjacker@foxmail.com> - 0.22.0-3
 - Rebuild for new 4.0 release
 
