@@ -2,12 +2,14 @@
 
 Name: qt-creator
 Version: 3.5.1
-Release: 4 
+Release: 5 
 Summary: Lightweight and cross-platform IDE for Qt
 License: LGPLv2 with exceptions
 URL: http://www.qtsoftware.com/developer/qt-creator
 Source0: http://get.qt.nokia.com/qtcreator/%{name}-opensource-src-%{version}.tar.gz
 Source1: qtcreator.desktop
+#if lldb-mi exist, it will cause qt-creator very slow startup.
+#the root cause is lldb-mi did not take '-version' but '--version'
 Patch0: qt-creator-clean-debugger-list.patch
 
 BuildRequires:  desktop-file-utils
@@ -37,6 +39,7 @@ even faster and easier.
 
 %prep
 %setup -q -n %{name}-opensource-src-%{version}
+%patch0 -p1
 
 %build
 QTDIR="%{_qt5_prefix}" ; export QTDIR ; \
@@ -82,6 +85,9 @@ fi
 %{_docdir}/qtcreator
 
 %changelog
+* Fri Oct 30 2015 Cjacker <cjacker@foxmail.com> - 3.5.1-5
+- Enable patch0, fix qt-creator slow startup
+
 * Sun Oct 25 2015 Cjacker <cjacker@foxmail.com> - 3.5.1-4
 - Rebuild for new 4.0 release
 
