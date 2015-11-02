@@ -4,7 +4,7 @@
 Summary: Mozilla Thunderbird mail/newsgroup client
 Name: thunderbird
 Version: 38.3.0
-Release: 17 
+Release: 18 
 URL: http://www.mozilla.org/projects/thunderbird/
 License: MPL
 Source0: thunderbird-%{version}.source.tar.bz2
@@ -31,7 +31,6 @@ BuildRequires:  nspr-devel
 BuildRequires:  nss-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libjpeg-devel
-BuildRequires:  zip
 BuildRequires:  bzip2-devel
 BuildRequires:  zlib-devel
 BuildRequires:  libIDL-devel
@@ -53,7 +52,8 @@ BuildRequires:  pulseaudio-libs-devel
 BuildRequires:  sqlite-devel
 BuildRequires:  libffi-devel
 BuildRequires:  zlib-devel, gzip, zip, unzip
-BuildRequires: yasm
+BuildRequires:  yasm
+
 
 Requires: nss
 Requires: nspr
@@ -152,6 +152,9 @@ update-desktop-database ||:
 %{_libdir}/thunderbird*
 
 %changelog
+* Sun Nov 01 2015 Cjacker <cjacker@foxmail.com> - 38.3.0-18
+- Rebuild with icu 56.1
+
 * Sun Oct 25 2015 Cjacker <cjacker@foxmail.com> - 38.2.0-17
 - Update to 38.3.0
 - Rebuild for new 4.0 release

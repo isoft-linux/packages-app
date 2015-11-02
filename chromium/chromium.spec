@@ -1,6 +1,6 @@
 Name:       chromium
-Version:    46.0.2490.71
-Release:    3%{?dist}
+Version:    46.0.2490.80
+Release:    4%{?dist}
 Summary:    An open-source project that aims to build a safer, faster, and more stable browser
 
 License:    BSD and LGPLv2+
@@ -25,6 +25,7 @@ ExclusiveArch: x86_64
 BuildRequires: gcc >= 5.1.1-2
 # Basic tools and libraries
 BuildRequires: ninja-build, bison, gperf
+BuildRequires: python
 BuildRequires: libcap-devel, cups-devel, minizip-devel, alsa-lib-devel
 BuildRequires: pkgconfig(gtk+-2.0), pkgconfig(libexif), pkgconfig(nss)
 BuildRequires: pkgconfig(xtst), pkgconfig(xscrnsaver)
@@ -188,6 +189,9 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 
 
 %changelog
+* Sat Oct 31 2015 Cjacker <cjacker@foxmail.com> - 46.0.2490.80-4
+- Update
+
 * Sun Oct 25 2015 Cjacker <cjacker@foxmail.com> - 46.0.2490.71-3
 - Rebuild for new 4.0 release
 
