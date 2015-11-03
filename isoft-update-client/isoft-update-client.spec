@@ -1,6 +1,6 @@
 Name: isoft-update-client
-Version: 0.2.0
-Release: 4%{?dist}
+Version: 0.4.0
+Release: 1%{?dist}
 Summary: iSOFT Update Client
 
 License: GPLv2 or GPLv3
@@ -93,6 +93,10 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 
 
 %changelog
+* Tue Nov 03 2015 Leslie Zhai <xiang.zhai@i-soft.com.cn>
+- fujiang fix rpm-helper install rpm list issue.
+- fujiang update kcm and plasmoid UI.
+
 * Sun Oct 25 2015 Cjacker <cjacker@foxmail.com> - 0.2.0-4
 - Rebuild for new 4.0 release
 
