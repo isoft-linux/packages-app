@@ -1,11 +1,12 @@
 Name: firstboot-qt
 Version: 1.0
-Release: 3 
+Release: 4 
 Summary: First boot setup wizard
 
 License: GPLv2
 Source0: %{name}-%{version}.tar.gz
 BuildRequires: git cmake qt5-qtbase-devel qt5-qttools-devel gnome-desktop3-devel
+BuildRequires: kf5-ki18n-devel
 Requires: qt5-qtbase
 
 %description
@@ -36,6 +37,9 @@ make GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 DESTDIR=%{buildroot} install -C bui
 %{_datadir}/apps/firstboot/*
 
 %changelog
+* Wed Nov 04 2015 fujiang <fujiang.zhu@isoft.com.cn> - 1.0-4
+- update:set keylayout
+
 * Sun Oct 25 2015 Cjacker <cjacker@foxmail.com> - 1.0-3
 - Rebuild for new 4.0 release
 
