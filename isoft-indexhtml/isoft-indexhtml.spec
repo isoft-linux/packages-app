@@ -1,9 +1,9 @@
 #NOTE, this is chromium default settings and only works with chromium.
-%define checksum db63edf1a45437821a64b7136f2323c5
+%define checksum dfc1cdd820aa00459c639acf4e3776ca
 
 Name: isoft-indexhtml
-Version: 4.0
-Release: 3
+Version: 4.1
+Release: 1
 Summary: The default settings and first startup page of Chromium browser.
 
 License: Public Domain 
@@ -39,6 +39,9 @@ install -m 0644 %{PATCH0} %{buildroot}%{_libdir}/chromium-browser/
 %{_datadir}/indexhtml/*
 
 %changelog
+* Thu Nov 05 2015 Wu Xiaotian <xiaotian.wu@i-soft.com.cn> - 4.1-1
+- new version
+
 * Thu Nov 05 2015 Wu Xiaotian <xiaotian.wu@i-soft.com.cn> - 4.0-3
 - rebuilt
 
