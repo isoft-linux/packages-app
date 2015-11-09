@@ -1,6 +1,6 @@
 Name:           kcm-useraccount
-Version:        5.4.0
-Release:        5 
+Version:        5.4.1
+Release:        1
 Summary:        User accounts manager for plasma workspace 
 
 License:        GPLv3+
@@ -47,6 +47,9 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 %{_kf5_datadir}/kservices5/kcm_useraccount.desktop
 
 %changelog
+* Mon Nov 09 2015 Leslie Zhai <xiang.zhai@i-soft.com.cn>
+- Fix kcm_useraccount.desktop Name and Comment issue.
+
 * Sun Oct 25 2015 Cjacker <cjacker@foxmail.com> - 5.4.0-5
 - Rebuild for new 4.0 release
 
