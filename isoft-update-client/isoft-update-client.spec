@@ -1,5 +1,5 @@
 Name: isoft-update-client
-Version: 0.4.0
+Version: 0.5.0
 Release: 1%{?dist}
 Summary: iSOFT Update Client
 
@@ -93,6 +93,9 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 
 
 %changelog
+* Mon Nov 09 2015 Leslie Zhai <xiang.zhai@i-soft.com.cn>
+- Add HTTP header 404 check.
+
 * Tue Nov 03 2015 Leslie Zhai <xiang.zhai@i-soft.com.cn>
 - fujiang fix rpm-helper install rpm list issue.
 - fujiang update kcm and plasmoid UI.
