@@ -1,23 +1,34 @@
-Name:       chromium
-Version:    46.0.2490.80
-Release:    4%{?dist}
-Summary:    An open-source project that aims to build a safer, faster, and more stable browser
+Name: chromium
+Version: 46.0.2490.86
+Release: 2%{?dist}
+Summary: An open-source project that aims to build a safer, faster, and more stable browser
 
-License:    BSD and LGPLv2+
-URL:        https://www.chromium.org
-Source0:    https://commondatastorage.googleapis.com/chromium-browser-official/chromium-%{version}.tar.xz
+License: BSD and LGPLv2+
+URL: https://www.chromium.org
+Source0: https://commondatastorage.googleapis.com/chromium-browser-official/chromium-%{version}.tar.xz
 
 # The following two source files are copied and modified from
 # https://repos.fedorapeople.org/repos/spot/chromium/
-Source1:    chromium-browser.sh
-Source2:    chromium-browser.desktop
+Source1: chromium-browser.sh
+Source2: chromium-browser.desktop
+
+#svg icon
+Source3: chromium-browser.svg
 
 # Enable window title frame under KDE
 Patch0: chromium-enable-custom-window-title-frame.patch
 # Patches to fix chromium issue under kf5
 Patch3: chromium-kf5.patch
 Patch4: chromium-fix-kf5-kioslaverc-dir.patch
- 
+
+#revert: https://codereview.chromium.org/1303313005
+#This commit cause no border of chromium popup menu under KF5.
+#Let's revert it.
+Patch5: chromium-revert-issue-1303313005-patch.patch
+
+#https://code.google.com/p/chromium/issues/detail?id=505226
+Patch100: 0001-Add-FPDFAPIJPEG_-prefix-to-more-libjpeg-functions.patch
+
 # I don't have time to test whether it work on other architectures
 ExclusiveArch: x86_64
 
@@ -66,6 +77,9 @@ Requires:   hicolor-icon-theme
 %patch0 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
+
+%patch100 -p1 -d third_party/pdfium
 
 # https://groups.google.com/a/chromium.org/d/topic/chromium-packagers/9JX1N2nf4PU/discussion
 touch chrome/test/data/webui/i18n_process_css_test.html
@@ -156,6 +170,7 @@ for i in 22 24 48 64 128 256; do
         %{buildroot}%{_datadir}/icons/hicolor/${i}x${i}/apps/chromium-browser.png
 done
 
+install -D -m0644 %{SOURCE3} %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/chromium-browser.svg
 
 %post
 touch --no-create %{_datadir}/icons/hicolor &>/dev/null || :
@@ -189,6 +204,10 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 
 
 %changelog
+* Fri Nov 13 2015 Cjacker <cjacker@foxmail.com> - 46.0.2490.86-2
+- Update, revert issue 1303313005 commit
+- add svg icon
+
 * Sat Oct 31 2015 Cjacker <cjacker@foxmail.com> - 46.0.2490.80-4
 - Update
 
