@@ -1,5 +1,5 @@
 Name: isoft-package-installer
-Version: 0.1.0
+Version: 0.2.0
 Release: 1%{?dist}
 Summary: iSOFT Package Installer
 
@@ -78,5 +78,9 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 %{_kf5_datadir}/applications/isoft-package-installer.desktop
 
 %changelog
+* Wed Nov 18 2015 Leslie Zhai <xiang.zhai@i-soft.com.cn>
+- Fix install deb file issue.
+- Update UI by dingkai.
+
 * Tue Nov 17 2015 Leslie Zhai <xiang.zhai@i-soft.com.cn>
 - Release 0.1.0
