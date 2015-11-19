@@ -1,6 +1,6 @@
 Name:		kf5-kmozillahelper
 Version:	0.6.4
-Release:	3.git
+Release:	4.git
 Summary:    Mozilla kde integration	
 
 License:    GPL	
@@ -40,12 +40,16 @@ pushd build
 make install DESTDIR=%{buildroot}
 popd
 
+#remove notifyrc.
+rm -rf %{buildroot}%{_datadir}/kmozillahelper
+
 %files
 %{_libdir}/mozilla/kmozillahelper
-%dir %{_datadir}/kmozillahelper
-%{_datadir}/kmozillahelper/kmozillahelper.notifyrc
 
 %changelog
+* Thu Nov 19 2015 Cjacker <cjacker@foxmail.com> - 0.6.4-4.git
+- Remove notifyrc
+
 * Thu Nov 19 2015 Cjacker <cjacker@foxmail.com> - 0.6.4-3.git
 - Add filters support
 
