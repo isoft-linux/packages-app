@@ -1,6 +1,6 @@
 Name: chromium
 Version: 46.0.2490.86
-Release: 2%{?dist}
+Release: 3%{?dist}
 Summary: An open-source project that aims to build a safer, faster, and more stable browser
 
 License: BSD and LGPLv2+
@@ -25,6 +25,20 @@ Patch4: chromium-fix-kf5-kioslaverc-dir.patch
 #This commit cause no border of chromium popup menu under KF5.
 #Let's revert it.
 Patch5: chromium-revert-issue-1303313005-patch.patch
+
+#the way chromium support kdialog is via involking 'kdialog' command.
+#It had a issue that:
+#for gtk dialog, it's call via GTK api, then dialog file filter and filer index
+#can be set and retreived. so, 'save page' can provide two way: only html and complete page.
+#
+#But involking 'kdialog' only return the filepath, there is no way to retreive file type index.
+#chromium depend on the 'file type index' returned by filedialog to determine how to save a page.
+#
+#That's to say, even we passed two filter to kdialog, it still not work as our expected.
+#refer to: https://code.google.com/p/chromium/issues/detail?id=109913
+#So, here is a workaround, since most user need save page with picture etc.
+#We force to save as complete page under kde and 'not forced to use gtk dialog'
+Patch6: force-chromium-save-html-as-complete-page-when-use-kde-and-not-force-to-gtkdialog.patch
 
 #https://code.google.com/p/chromium/issues/detail?id=505226
 Patch100: 0001-Add-FPDFAPIJPEG_-prefix-to-more-libjpeg-functions.patch
@@ -78,6 +92,7 @@ Requires:   hicolor-icon-theme
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 %patch100 -p1 -d third_party/pdfium
 
@@ -204,6 +219,9 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 
 
 %changelog
+* Thu Nov 19 2015 Cjacker <cjacker@foxmail.com> - 46.0.2490.86-3
+- Enable save complete html under kde if use kdialog
+
 * Fri Nov 13 2015 Cjacker <cjacker@foxmail.com> - 46.0.2490.86-2
 - Update, revert issue 1303313005 commit
 - add svg icon
