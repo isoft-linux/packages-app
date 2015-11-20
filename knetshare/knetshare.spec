@@ -1,5 +1,5 @@
 Name: knetshare
-Version: 0.1.0
+Version: 0.2.0
 Release: 1%{?dist}
 Summary: netshare for KF5
 
@@ -48,5 +48,8 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 
 
 %changelog
+* Fri Nov 20 2015 Leslie Zhai <xiang.zhai@i-soft.com.cn>
+- Fix zh_CN po issue.
+
 * Fri Oct 09 2015 Leslie Zhai <xiang.zhai@i-soft.com.cn>
 - Migrated to KF5
