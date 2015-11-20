@@ -1,6 +1,6 @@
 Name: isoft-package-installer
-Version: 0.2.0
-Release: 1%{?dist}
+Version: 0.3.0
+Release: 2%{?dist}
 Summary: iSOFT Package Installer
 
 License: GPLv2 or GPLv3
@@ -78,6 +78,9 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 %{_kf5_datadir}/applications/isoft-package-installer.desktop
 
 %changelog
+* Fri Nov 20 2015 dingkai - 0.2.0-2
+- change po
+
 * Wed Nov 18 2015 Leslie Zhai <xiang.zhai@i-soft.com.cn>
 - Fix install deb file issue.
 - Update UI by dingkai.
