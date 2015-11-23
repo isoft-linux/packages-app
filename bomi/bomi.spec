@@ -2,12 +2,13 @@ Name:       bomi
 Summary:    A multimedia player
 License:    GPLv2
 Version:    0.9.11
-Release:    4%{?dist}
+Release:    5%{?dist}
 Url:        http://bomi.github.io/
 Source0:    https://github.com/xylosper/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 
 Patch0: bomi-customized.patch
 Patch1: bomi-add-zh-trans.patch
+Patch2: bomi-always-use-utf8-to-load-playlist.patch
 
 BuildRequires:  ffmpeg-devel
 BuildRequires:  bzip2-devel
@@ -40,6 +41,7 @@ bomi is a Qt-based multimedia player utilizing the MPV video back-end.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 ./configure --prefix=/usr \
@@ -82,6 +84,9 @@ xdg-icon-resource forceupdate --theme hicolor &> /dev/null
 %{_mandir}/man1/bomi.1.gz
 
 %changelog
+* Sat Nov 21 2015 Cjacker <cjacker@foxmail.com> - 0.9.11-5
+- disable mpris2 option by default
+
 * Sun Oct 25 2015 Cjacker <cjacker@foxmail.com> - 0.9.11-4
 - Rebuild for new 4.0 release
 
