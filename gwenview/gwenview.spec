@@ -1,7 +1,7 @@
 Name:    gwenview 
 Summary: An image viewer
-Version: 15.08.3
-Release: 2
+Version: 15.11.80
+Release: 2 
 
 License: GPLv2+
 URL:     https://projects.kde.org/projects/kde/kdegraphics/gwenview
@@ -96,7 +96,7 @@ gtk-update-icon-cache %{_kf5_datadir}/icons/hicolor &> /dev/null || :
 %doc COPYING 
 %{_kf5_bindir}/%{name}*
 %{_kf5_datadir}/applications/org.kde.%{name}.desktop
-%{_datadir}/appdata/%{name}.appdata.xml
+%{_datadir}/appdata/*.appdata.xml
 %{_kf5_datadir}/icons/hicolor/*/*/*
 %{_kf5_docdir}/HTML/en/gwenview/
 %{_kf5_datadir}/kservices5/gvpart.desktop
@@ -111,6 +111,9 @@ gtk-update-icon-cache %{_kf5_datadir}/icons/hicolor &> /dev/null || :
 
 
 %changelog
+* Sat Nov 21 2015 Cjacker <cjacker@foxmail.com> - 15.11.80-2
+- Update
+
 * Thu Nov 12 2015 Cjacker <cjacker@foxmail.com> - 15.08.3-2
 - Update
 

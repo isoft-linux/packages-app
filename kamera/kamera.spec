@@ -1,7 +1,7 @@
 Name:    kamera
 Summary: Digital camera support for KDE 
-Version: 15.07.90
-Release: 3%{?dist}
+Version: 15.11.80
+Release: 1%{?dist}
 
 License: GPLv2
 URL:     https://projects.kde.org/projects/kde/kdegraphics/kamera
@@ -11,20 +11,21 @@ URL:     https://projects.kde.org/projects/kde/kdegraphics/kamera
 %else
 %global stable stable
 %endif
-Source0: ftp://ftp.kde.org/pub/kde/%{stable}/%{version}/src/%{name}-%{version}.tar.xz
+Source0: http://download.kde.org/%{stable}/applications/%{version}/src/%{name}-%{version}.tar.xz
 
-Patch0: kamera-port-to-kf5.patch
-Patch1: kamera-15.04.3-port-to-kf5-2.patch
-#disable kcm module, it crash and almost useless, since almost all camera use USB connect to PC.
-Patch2: kamera-disable-kcm-module.patch
+BuildRequires: cmake
+BuildRequires: desktop-file-utils
+BuildRequires: extra-cmake-modules
+BuildRequires: gettext
+BuildRequires: kf5-rpm-macros
+BuildRequires: kf5-kconfigwidgets-devel
+BuildRequires: kf5-kxmlgui-devel
+BuildRequires: kf5-kio-devel
+BuildRequires: kf5-ki18n-devel
+BuildRequires: kf5-kconfig-devel
+BuildRequires: kf5-kdoctools-devel
 
-BuildRequires: kdelibs4-devel >= 4.14
 BuildRequires: pkgconfig(libgphoto2)
-
-%{?kde_runtime_requires}
-
-# when split occurred
-Conflicts: kdegraphics < 7:4.6.95-10
 
 %description
 %{summary}.
@@ -32,9 +33,6 @@ Conflicts: kdegraphics < 7:4.6.95-10
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
 %build
 mkdir -p %{_target_platform}
 pushd %{_target_platform}
@@ -52,12 +50,12 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 
 %files
 %doc AUTHORS README
-%{_kf5_plugindir}/kio/kamera.so
-#%{_kf5_qtplugindir}/*.so
+%{_kf5_qtplugindir}/kio_kamera.so
+%{_kf5_qtplugindir}/kcm_kamera.so
 %{_kf5_datadir}/solid/actions/solid_camera.desktop
-#%{_kf5_datadir}/kservices5/*.desktop
+%{_kf5_datadir}/kservices5/*.desktop
 %{_kf5_datadir}/kservices5/*.protocol
-#%{_docdir}/HTML/en/kcontrol/%{name}/
+%{_docdir}/HTML/en/kcontrol/%{name}/
 
 
 %changelog

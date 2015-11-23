@@ -1,0 +1,17 @@
+--- bomi-0.9.11n/src/bomi/player/playlist.cpp	2015-05-20 17:31:58.000000000 +0800
++++ bomi-0.9.11/src/bomi/player/playlist.cpp	2015-11-21 23:09:00.346083875 +0800
+@@ -57,10 +57,12 @@
+ {
+     clear();
+     EncodingInfo enc = _enc;
+-    if (type == M3U8)
+-        enc = EncodingInfo::utf8();
++    //if (type == M3U8)
++    //always use utf8.
++    enc = EncodingInfo::utf8();
+     if (enc.isValid())
+         in.setCodec(enc.codec());
++
+     const qint64 pos = in.pos();
+     in.seek(0);
+     auto ret = [&] () {
