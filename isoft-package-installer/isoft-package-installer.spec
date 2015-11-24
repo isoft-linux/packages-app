@@ -26,6 +26,7 @@ BuildRequires: libelfutils-devel
 BuildRequires: qt5-qtbase-devel
 BuildRequires: kf5-ki18n-devel
 BuildRequires: libcap-devel
+BuildRequires: file-devel
 
 Requires: kf5-filesystem
 Requires: systemd 
