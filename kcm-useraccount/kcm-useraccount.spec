@@ -1,5 +1,5 @@
 Name:           kcm-useraccount
-Version:        5.4.1
+Version:        5.4.2
 Release:        1
 Summary:        User accounts manager for plasma workspace 
 
@@ -47,6 +47,9 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 %{_kf5_datadir}/kservices5/kcm_useraccount.desktop
 
 %changelog
+* Tue Nov 24 2015 Leslie Zhai <xiang.zhai@i-soft.com.cn>
+- Fix polkit sync API blocking issue.
+
 * Mon Nov 09 2015 Leslie Zhai <xiang.zhai@i-soft.com.cn>
 - Fix kcm_useraccount.desktop Name and Comment issue.
 
