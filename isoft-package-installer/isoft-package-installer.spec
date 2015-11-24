@@ -25,6 +25,7 @@ BuildRequires: bzip2-devel
 BuildRequires: libelfutils-devel
 BuildRequires: qt5-qtbase-devel
 BuildRequires: kf5-ki18n-devel
+BuildRequires: libcap-devel
 
 Requires: kf5-filesystem
 Requires: systemd 
