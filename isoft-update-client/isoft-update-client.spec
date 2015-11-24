@@ -1,5 +1,5 @@
 Name: isoft-update-client
-Version: 0.5.0
+Version: 0.6.0
 Release: 1%{?dist}
 Summary: iSOFT Update Client
 
@@ -93,6 +93,9 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 
 
 %changelog
+* Tue Nov 24 2015 Leslie Zhai <xiang.zhai@i-soft.com.cn>
+- Remove plasma noizzzy network and other error.
+
 * Mon Nov 09 2015 Leslie Zhai <xiang.zhai@i-soft.com.cn>
 - Add HTTP header 404 check.
 
