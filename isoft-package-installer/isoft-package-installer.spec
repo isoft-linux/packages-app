@@ -1,5 +1,5 @@
 Name: isoft-package-installer
-Version: 0.4.0
+Version: 0.5.0
 Release: 1%{?dist}
 Summary: iSOFT Package Installer
 
@@ -80,6 +80,10 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 %{_kf5_datadir}/applications/isoft-package-installer.desktop
 
 %changelog
+* Wed Nov 25 2015 Leslie Zhai <xiang.zhai@i-soft.com.cn>
+- Add multiple rpm, src.rpm, deb packages install support.
+- Update UI by dingkai.
+
 * Tue Nov 24 2015 Leslie Zhai <xiang.zhai@i-soft.com.cn>
 - Use yetist deb2rpm mkapp.
 
