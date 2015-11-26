@@ -1,5 +1,5 @@
 Name: knetshare
-Version: 0.3.0
+Version: 0.4.0
 Release: 1%{?dist}
 Summary: netshare for KF5
 
@@ -50,6 +50,7 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 %changelog
 * Thu Nov 26 2015 Leslie Zhai <xiang.zhai@i-soft.com.cn>
 - Fix rename share issue.
+- Add special characters denied.
 
 * Fri Nov 20 2015 Leslie Zhai <xiang.zhai@i-soft.com.cn>
 - Fix zh_CN po issue.
