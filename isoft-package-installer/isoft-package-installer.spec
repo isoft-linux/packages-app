@@ -1,5 +1,5 @@
 Name: isoft-package-installer
-Version: 0.5.0
+Version: 0.6.0
 Release: 1%{?dist}
 Summary: iSOFT Package Installer
 
@@ -75,11 +75,15 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 %{_datadir}/dbus-1/system-services/org.isoftlinux.Install.service
 %{_unitdir}/isoft-install-daemon.service
 %{_bindir}/isoft-install-daemon
+%{_bindir}/deb2rpm
 # greeter
 %{_kf5_bindir}/isoft-package-installer
 %{_kf5_datadir}/applications/isoft-package-installer.desktop
 
 %changelog
+* Mon Nov 30 2015 Leslie Zhai <xiang.zhai@i-soft.com.cn>
+- Fix deb2rpm issue and provide deb2rpm tool.
+
 * Wed Nov 25 2015 Leslie Zhai <xiang.zhai@i-soft.com.cn>
 - Add multiple rpm, src.rpm, deb packages install support.
 - Update UI by dingkai.
