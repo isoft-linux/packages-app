@@ -9,6 +9,7 @@
      "create_all_shortcuts": false,
      "import_history": false,
      "import_bookmarks": false,
+     "import_bookmarks_from_file": "/usr/share/indexhtml/Bookmarks", 
      "import_home_page": false,
      "import_search_engine": false,
      "do_not_launch_chrome": false,
@@ -42,8 +43,8 @@
 //       "id":1001
 //     }
 //  ],
-  "first_run_tabs": [
-     "file:///usr/share/indexhtml/index.html",
-     "http://www.i-soft.com.cn"
-  ]
+    "first_run_tabs": [
+        "file:///usr/share/indexhtml/index.html",
+        "http://www.i-soft.com.cn"
+    ]
 }
