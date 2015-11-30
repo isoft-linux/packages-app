@@ -1,5 +1,5 @@
 Name: isoft-update-client
-Version: 0.7.0
+Version: 0.8.0
 Release: 1%{?dist}
 Summary: iSOFT Update Client
 
@@ -27,6 +27,7 @@ BuildRequires: qt5-qtquickcontrols-devel
 BuildRequires: kf5-kdelibs4support-devel
 BuildRequires: kf5-plasma-devel
 BuildRequires: kf5-ki18n-devel
+BuildRequires: plasma-workspace-devel
 
 Requires: kf5-filesystem
 Requires: systemd 
@@ -93,6 +94,10 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 
 
 %changelog
+* Mon Nov 30 2015 Leslie Zhai <xiang.zhai@i-soft.com.cn>
+- Use g_spawn_command_line_sync instead of system.
+- Use KWorkSpace::requestShutDown instead of system.
+
 * Fri Nov 27 2015 Leslie Zhai <xiang.zhai@i-soft.com.cn>
 - Disable default button.
 
