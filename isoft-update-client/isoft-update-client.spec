@@ -28,6 +28,7 @@ BuildRequires: kf5-kdelibs4support-devel
 BuildRequires: kf5-plasma-devel
 BuildRequires: kf5-ki18n-devel
 BuildRequires: plasma-workspace-devel
+BuildRequires: NetworkManager-glib-devel
 
 Requires: kf5-filesystem
 Requires: systemd 
