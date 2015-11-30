@@ -1,6 +1,6 @@
 Name: chromium
 Version: 46.0.2490.86
-Release: 3%{?dist}
+Release: 4%{?dist}
 Summary: An open-source project that aims to build a safer, faster, and more stable browser
 
 License: BSD and LGPLv2+
@@ -14,6 +14,17 @@ Source2: chromium-browser.desktop
 
 #svg icon
 Source3: chromium-browser.svg
+
+#unfortunately, nacl toolchain still need 32bit libbrary to run even under x86_64 bit environment.
+
+#This is some 32bit runtime libraries to support nacl toolchain.
+#it will not used in build process, but we should put it here.
+#1, you have to untar this to / before build chromium
+#2, also means chromium can not build in koji.
+Source9: 32bit-runtime-library.tar.gz
+
+#predownloaded nacl toolchain.
+Source10: toolchain.tar.gz
 
 # Enable window title frame under KDE
 Patch0: chromium-enable-custom-window-title-frame.patch
@@ -96,10 +107,22 @@ Requires:   hicolor-icon-theme
 
 %patch100 -p1 -d third_party/pdfium
 
+tar zxf %{SOURCE10} -C native_client
+
 # https://groups.google.com/a/chromium.org/d/topic/chromium-packagers/9JX1N2nf4PU/discussion
 touch chrome/test/data/webui/i18n_process_css_test.html
 
+
 %build
+#prepare nacl toolchain
+#download
+#python2 build/download_nacl_toolchains.py  --packages nacl_x86_newlib,pnacl_newlib,pnacl_translator sync
+#extract
+python2 build/download_nacl_toolchains.py  --packages nacl_x86_newlib,pnacl_newlib,pnacl_translator extract
+
+#we set this to use 32bit runtime library.
+export LD_LIBRARY_PATH=/l32
+
 ./build/linux/unbundle/replace_gyp_files.py \
     -Duse_system_expat=1 \
     -Duse_system_flac=1 \
@@ -148,7 +171,9 @@ GYP_GENERATORS=ninja ./build/gyp_chromium --depth=. \
     -Dwerror= \
     -Ddisable_fatal_linker_warnings=1 \
     -Denable_hotwording=0 \
-    -Ddisable_nacl=1 \
+    -Denable_nacl=1 \
+    -Denable_pnacl=1 \
+    -Ddisable_glibc=1 \
     -Dgoogle_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM \
     -Dgoogle_default_client_id=413772536636.apps.googleusercontent.com \
     -Dgoogle_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4 \
@@ -179,6 +204,13 @@ install -m 644 out/Release/natives_blob.bin %{buildroot}%{chromiumdir}/
 install -m 644 out/Release/snapshot_blob.bin %{buildroot}%{chromiumdir}/
 install -m 644 out/Release/*.pak %{buildroot}%{chromiumdir}/
 install -m 644 out/Release/locales/*.pak %{buildroot}%{chromiumdir}/locales/
+
+#nacl
+install -m 755 out/Release/nacl_helper %{buildroot}%{chromiumdir}/
+install -m 755 out/Release/nacl_helper_bootstrap %{buildroot}%{chromiumdir}/
+cp out/Release/nacl_irt_*.nexe %{buildroot}%{chromiumdir}/
+chmod 755  %{buildroot}%{chromiumdir}/*.nexe
+
 for i in 22 24 48 64 128 256; do
     mkdir -p %{buildroot}%{_datadir}/icons/hicolor/${i}x${i}/apps
     install -m 644 chrome/app/theme/chromium/product_logo_$i.png \
@@ -207,18 +239,24 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 %{_datadir}/applications/chromium-browser.desktop
 %{_datadir}/icons/hicolor/*/apps/chromium-browser.*
 %{_mandir}/man1/chromium-browser.1.gz
+%dir %{chromiumdir}
 %{chromiumdir}/chromium-browser
 %{chromiumdir}/chrome-sandbox
 %{chromiumdir}/chromedriver
+%{chromiumdir}/nacl*
 %{chromiumdir}/icudtl.dat
 %{chromiumdir}/natives_blob.bin
 %{chromiumdir}/snapshot_blob.bin
 %{chromiumdir}/*.pak
+%dir %{chromiumdir}/locales
 %{chromiumdir}/locales/*.pak
 
 
 
 %changelog
+* Sat Nov 28 2015 Cjacker <cjacker@foxmail.com> - 46.0.2490.86-4
+- Enable nacl
+
 * Thu Nov 19 2015 Cjacker <cjacker@foxmail.com> - 46.0.2490.86-3
 - Enable save complete html under kde if use kdialog
 
