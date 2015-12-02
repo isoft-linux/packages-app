@@ -1,5 +1,5 @@
 Name: isoft-package-installer
-Version: 0.6.0
+Version: 0.7.0
 Release: 1%{?dist}
 Summary: iSOFT Package Installer
 
@@ -81,6 +81,9 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 %{_kf5_datadir}/applications/isoft-package-installer.desktop
 
 %changelog
+* Wed Dec 02 2015 Leslie Zhai <xiang.zhai@i-soft.com.cn>
+- New UI.
+
 * Mon Nov 30 2015 Leslie Zhai <xiang.zhai@i-soft.com.cn>
 - Fix deb2rpm issue and provide deb2rpm tool.
 
