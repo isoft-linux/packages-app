@@ -1,7 +1,7 @@
 Summary: Multiprotocol IM client
 Name:pidgin
 Version: 2.10.11
-Release: 6 
+Release: 7 
 License:GPL
 URL:    http://pidgin.im/
 Source:%{name}-%{version}.tar.bz2
@@ -41,6 +41,8 @@ Patch116:      pidgin-2.10.11-application-media.patch
 Patch117:      pidgin-2.10.11-fix-appsrc-race.patch
 # http://hg.pidgin.im/pidgin/main/rev/cbc4db14444c
 Patch118:      pidgin-2.10.11-no-drain-appsink.patch
+# by yetist, show xmpp image
+Patch119: pidgin-show-base64-image.patch
 
 
 BuildRequires: GConf2
@@ -185,6 +187,7 @@ Requires: libpurple-devel = %{version}
 %patch117 -p1
 # http://hg.pidgin.im/pidgin/main/rev/cbc4db14444c
 %patch118 -p1
+%patch119 -p1
 
 autoreconf -ivf
 
@@ -302,6 +305,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libgnt.so*
 
 %changelog
+* Thu Dec 03 2015 xiaotian.wu@i-soft.com.cn - 2.10.11-7
+- Add patch to show image for xmpp.
+
 * Fri Nov 27 2015 Cjacker <cjacker@foxmail.com> - 2.10.11-6
 - Merge patches back from upstream
 

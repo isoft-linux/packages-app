@@ -1,0 +1,28 @@
+Index: pidgin-2.10.11/pidgin/gtkimhtml.c
+===================================================================
+--- pidgin-2.10.11.orig/pidgin/gtkimhtml.c
++++ pidgin-2.10.11/pidgin/gtkimhtml.c
+@@ -3057,9 +3057,20 @@ void gtk_imhtml_insert_html_at_iter(GtkI
+ 							src = gtk_imhtml_get_html_opt(tag, "SRC=");
+ 							alt = gtk_imhtml_get_html_opt(tag, "ALT=");
+ 							if (src) {
+-								gtk_imhtml_toggle_link(imhtml, src);
+-								gtk_text_buffer_insert(imhtml->text_buffer, iter, alt ? alt : src, -1);
+-								gtk_imhtml_toggle_link(imhtml, NULL);
++								if ((strncmp(src, "data:image/", 11) == 0 ) && strstr(src, "base64,") != NULL) {
++									guchar *data;
++									gsize len;
++									int id;
++
++									data = g_base64_decode(strstr(src, "base64,") + 7, &len);
++									id = purple_imgstore_add_with_id(data, len, NULL);
++									gtk_imhtml_insert_image_at_iter(imhtml, id, iter);
++									g_free(data);
++								} else {
++									gtk_imhtml_toggle_link(imhtml, src);
++									gtk_text_buffer_insert(imhtml->text_buffer, iter, alt ? alt : src, -1);
++									gtk_imhtml_toggle_link(imhtml, NULL);
++								}
+ 							}
+ 							g_free (src);
+ 							g_free (alt);
