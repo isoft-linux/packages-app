@@ -1,6 +1,6 @@
 Name: isoft-package-installer
 Version: 0.7.0
-Release: 1%{?dist}
+Release: 2%{?dist}
 Summary: iSOFT Package Installer
 
 License: GPLv2 or GPLv3
@@ -59,6 +59,9 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 
 %find_lang isoftpackageinstaller
 
+#Remember to hide it, OK?
+echo "NoDisplay=true" >> %{buildroot}%{_datadir}/applications/isoft-package-installer.desktop
+
 %post
 %systemd_post isoft-install-daemon.service
 
@@ -81,6 +84,9 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 %{_kf5_datadir}/applications/isoft-package-installer.desktop
 
 %changelog
+* Thu Dec 03 2015 Cjacker <cjacker@foxmail.com> - 0.7.0-2
+- Hide desktop item
+
 * Wed Dec 02 2015 Leslie Zhai <xiang.zhai@i-soft.com.cn>
 - New UI.
 
