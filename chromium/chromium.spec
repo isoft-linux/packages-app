@@ -17,10 +17,13 @@ Source3: chromium-browser.svg
 
 #unfortunately, nacl toolchain still need 32bit libbrary to run even under x86_64 bit environment.
 
-#This is some 32bit runtime libraries to support nacl toolchain.
+#Some 32bit runtime libraries to support nacl toolchain.
 #it will not used in build process, but we should put it here.
 #1, you have to untar this to / before build chromium
 #2, also means chromium can not build in koji.
+#Add 20151207:
+#now we have a seperate package named "lib32-runtime".
+#These libraries should not be used anymore
 Source9: 32bit-runtime-library.tar.gz
 
 #predownloaded nacl toolchain.
@@ -90,6 +93,10 @@ BuildRequires: pciutils-devel
 BuildRequires: pulseaudio-libs-devel
 # install desktop files
 BuildRequires: desktop-file-utils
+
+# for nacl toolchain.
+BuildRequires: lib32-runtime
+
 Requires:   desktop-file-utils
 Requires:   hicolor-icon-theme
 
