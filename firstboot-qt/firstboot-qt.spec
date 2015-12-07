@@ -1,6 +1,6 @@
 Name: firstboot-qt
 Version: 1.0
-Release: 6 
+Release: 7 
 Summary: First boot setup wizard
 
 License: GPLv2
@@ -37,6 +37,9 @@ make GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 DESTDIR=%{buildroot} install -C bui
 %{_datadir}/apps/firstboot/*
 
 %changelog
+* Mon Dec 07 2015 fujiang <fujiang.zhu@isoft.com.cn> - 1.0-7
+- update language
+
 * Tue Dec 01 2015 fujiang <fujiang.zhu@isoft.com.cn> - 1.0-6
 - update
 
