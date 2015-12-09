@@ -1,7 +1,7 @@
 Name: isoftapp
-Version: 0.1.0
+Version: 0.6.0
 Release: 1%{?dist}
-Summary: iSOFT App
+Summary: iSOFT AppStore Skeleton
 
 License: GPLv2 or GPLv3
 URL: http://git.isoft.zhcn.cc/zhaixiang/isoftapp
@@ -18,7 +18,7 @@ BuildRequires: sqlite-devel
 
 
 %description
-iSOFT App.
+iSOFT AppStore Skeleton.
 
 
 %prep
@@ -38,14 +38,19 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 
 
 %files
-%{_sysconfdir}/isoftapp/sources.list
+%{_sysconfdir}/isoftapp/default.conf.example
+%{_sysconfdir}/isoftapp/config.d/other.conf.example
 %{_datadir}/isoftapp/pkgcache.db
-%{_bindir}/genpkglist
-%{_bindir}/gensrclist
-%{_bindir}/genbasedir
+%{_bindir}/isoft-genpkglist
+%{_bindir}/isoft-gensrclist
+%{_bindir}/isoft-genbasedir
 %{_bindir}/isoftapp
 
 %changelog
+* Wed Dec 09 2015 Leslie Zhai <xiang.zhai@i-soft.com.cn> - 0.6.0-1
+- Rename gen* to isoft-gen* to avoid conflict with apt package.
+- New configuration multi-repos support.
+
 * Tue Dec 08 2015 Leslie Zhai <xiang.zhai@i-soft.com.cn>
 - Release isoftapp v0.1.0 only support update, install, remove, check by fujiang.
 
