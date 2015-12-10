@@ -1,5 +1,5 @@
 Name: isoft-update-client
-Version: 0.8.0
+Version: 0.9.0
 Release: 1%{?dist}
 Summary: iSOFT Update Client
 
@@ -72,7 +72,6 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 
 
 %files -f plasma_applet_org.kde.plasma.isoftupdate.lang
-%doc README.md
 %{_sysconfdir}/isoft-update.conf
 %{_sysconfdir}/dbus-1/system.d/org.isoftlinux.Update.conf
 %{_datadir}/dbus-1/interfaces/org.isoftlinux.Update.xml
@@ -95,6 +94,9 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 
 
 %changelog
+* Thu Dec 10 2015 Leslie Zhai <xiang.zhai@i-soft.com.cn>
+- HideMyselfStatus implemented.
+
 * Mon Nov 30 2015 Leslie Zhai <xiang.zhai@i-soft.com.cn>
 - Use g_spawn_command_line_sync instead of system.
 - Use KWorkSpace::requestShutDown instead of system.
