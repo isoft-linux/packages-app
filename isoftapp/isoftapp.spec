@@ -1,5 +1,5 @@
 Name: isoftapp
-Version: 0.7.0
+Version: 0.8.0
 Release: 1%{?dist}
 Summary: iSOFT AppStore Skeleton
 
@@ -47,6 +47,9 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 %{_bindir}/isoftapp
 
 %changelog
+* Thu Dec 10 2015 Leslie Zhai <xiang.zhai@i-soft.com.cn>
+- Add list-uninstalled and upgrade by fujiang.
+
 * Wed Dec 09 2015 Leslie Zhai <xiang.zhai@i-soft.com.cn>
 - Rename gen* to isoft-gen* to avoid conflict with apt package.
 - New configuration multi-repos support.
