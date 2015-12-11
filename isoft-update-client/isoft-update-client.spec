@@ -1,5 +1,5 @@
 Name: isoft-update-client
-Version: 0.9.0
+Version: 1.0.0
 Release: 1%{?dist}
 Summary: iSOFT Update Client
 
@@ -94,6 +94,9 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 
 
 %changelog
+* Fri Dec 11 2015 Leslie Zhai <xiang.zhai@i-soft.com.cn>
+- Changed the name of the enum to HiddenStatus.
+
 * Thu Dec 10 2015 Leslie Zhai <xiang.zhai@i-soft.com.cn>
 - HideMyselfStatus implemented.
 
