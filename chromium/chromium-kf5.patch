@@ -24,31 +24,18 @@ diff -Nur chromium-45.0.2454.99/chrome/browser/password_manager/native_backend_k
    builder.AppendArrayOfStrings(empty);  // urls
    builder.AppendArrayOfStrings(empty);  // envs
    builder.AppendString(std::string());  // startup_id
-diff -Nur chromium-45.0.2454.99/chrome/browser/ssl/ssl_blocking_page.cc chromium-45.0.2454.99n/chrome/browser/ssl/ssl_blocking_page.cc
---- chromium-45.0.2454.99/chrome/browser/ssl/ssl_blocking_page.cc	2015-09-22 04:24:12.000000000 +0800
-+++ chromium-45.0.2454.99n/chrome/browser/ssl/ssl_blocking_page.cc	2015-09-25 15:35:02.463358126 +0800
-@@ -161,9 +161,9 @@
-     { "/usr/local/bin/gnome-control-center", "datetime" },
-     { "/opt/bin/gnome-control-center", "datetime" },
-     // KDE
--    { "/usr/bin/kcmshell4", "clock" },
--    { "/usr/local/bin/kcmshell4", "clock" },
--    { "/opt/bin/kcmshell4", "clock" },
-+    { "/usr/bin/kcmshell5", "clock" },
-+    { "/usr/local/bin/kcmshell5", "clock" },
-+    { "/opt/bin/kcmshell5", "clock" },
+--- chromium-47.0.2526.80/chrome/browser/ssl/bad_clock_blocking_page.cc	2015-12-09 04:02:51.000000000 +0800
++++ chromium-47.0.2526.80n/chrome/browser/ssl/bad_clock_blocking_page.cc	2015-12-13 14:46:06.925645923 +0800
+@@ -109,9 +109,9 @@
+       {"/usr/local/bin/gnome-control-center", "datetime"},
+       {"/opt/bin/gnome-control-center", "datetime"},
+       // KDE
+-      {"/usr/bin/kcmshell4", "clock"},
+-      {"/usr/local/bin/kcmshell4", "clock"},
+-      {"/opt/bin/kcmshell4", "clock"},
++      {"/usr/bin/kcmshell5", "clock"},
++      {"/usr/local/bin/kcmshell5", "clock"},
++      {"/opt/bin/kcmshell5", "clock"},
    };
  
    base::CommandLine command(base::FilePath(""));
-diff -Nur chromium-45.0.2454.99/chrome/browser/ui/webui/options/advanced_options_utils_linux.cc chromium-45.0.2454.99n/chrome/browser/ui/webui/options/advanced_options_utils_linux.cc
---- chromium-45.0.2454.99/chrome/browser/ui/webui/options/advanced_options_utils_linux.cc	2015-08-23 03:01:52.000000000 +0800
-+++ chromium-45.0.2454.99n/chrome/browser/ui/webui/options/advanced_options_utils_linux.cc	2015-09-25 15:34:35.276087455 +0800
-@@ -36,7 +36,7 @@
-                                            NULL};
- // KDE3 and KDE4 are only slightly different, but incompatible. Go figure.
- const char* kKDE3ProxyConfigCommand[] = {"kcmshell", "proxy", NULL};
--const char* kKDE4ProxyConfigCommand[] = {"kcmshell4", "proxy", NULL};
-+const char* kKDE4ProxyConfigCommand[] = {"kcmshell5", "proxy", NULL};
- 
- // The URL for Linux proxy configuration help when not running under a
- // supported desktop environment.

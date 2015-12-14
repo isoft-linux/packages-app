@@ -1,11 +1,11 @@
 Name: chromium
-Version: 46.0.2490.86
-Release: 4%{?dist}
-Summary: An open-source project that aims to build a safer, faster, and more stable browser
+Version: 47.0.2526.80  
+Release: 2%{?dist}
+Summary: Open-source version of Google Chrome web browser
 
 License: BSD and LGPLv2+
 URL: https://www.chromium.org
-Source0: https://commondatastorage.googleapis.com/chromium-browser-official/chromium-%{version}.tar.xz
+Source0: https://commondatastorage.googleapis.com/chromium-browser-official/chromium-%{version}-lite.tar.xz
 
 # The following two source files are copied and modified from
 # https://repos.fedorapeople.org/repos/spot/chromium/
@@ -14,20 +14,6 @@ Source2: chromium-browser.desktop
 
 #svg icon
 Source3: chromium-browser.svg
-
-#unfortunately, nacl toolchain still need 32bit libbrary to run even under x86_64 bit environment.
-
-#Some 32bit runtime libraries to support nacl toolchain.
-#it will not used in build process, but we should put it here.
-#1, you have to untar this to / before build chromium
-#2, also means chromium can not build in koji.
-#Add 20151207:
-#now we have a seperate package named "lib32-runtime".
-#These libraries should not be used anymore
-Source9: 32bit-runtime-library.tar.gz
-
-#predownloaded nacl toolchain.
-Source10: toolchain.tar.gz
 
 # Enable window title frame under KDE
 Patch0: chromium-enable-custom-window-title-frame.patch
@@ -54,9 +40,12 @@ Patch5: chromium-revert-issue-1303313005-patch.patch
 #We force to save as complete page under kde and 'not forced to use gtk dialog'
 Patch6: force-chromium-save-html-as-complete-page-when-use-kde-and-not-force-to-gtkdialog.patch
 
-#https://code.google.com/p/chromium/issues/detail?id=505226
+# https://code.google.com/p/chromium/issues/detail?id=505226
 Patch100: 0001-Add-FPDFAPIJPEG_-prefix-to-more-libjpeg-functions.patch
 
+# https://code.google.com/p/chromium/issues/detail?id=480415
+Patch101: chromium-fix-print-preview-on-en_GB-locale.patch
+ 
 # I don't have time to test whether it work on other architectures
 ExclusiveArch: x86_64
 
@@ -67,15 +56,19 @@ BuildRequires: ninja-build, bison, gperf
 BuildRequires: python
 BuildRequires: libcap-devel, cups-devel, minizip-devel, alsa-lib-devel
 BuildRequires: pkgconfig(gtk+-2.0), pkgconfig(libexif), pkgconfig(nss)
-BuildRequires: pkgconfig(xtst), pkgconfig(xscrnsaver)
+BuildRequires: pkgconfig(xtst), pkgconfig(xscrnsaver), pkgconfig(xi), pkgconfig(xcomposite), pkgconfig(xfixes)
+BuildRequires: pkgconfig(xext), pkgconfig(xrandr), pkgconfig(xrender), pkgconfig(xcursor), pkgconfig(xdamage)
 BuildRequires: pkgconfig(dbus-1), pkgconfig(libudev)
-BuildRequires: pkgconfig(gnome-keyring-1)
+
+BuildRequires: fontconfig-devel freetype-devel
+BuildRequires: nss-devel nspr-devel
+
 # use_system_*
 BuildRequires: expat-devel
 BuildRequires: flac-devel
 BuildRequires: harfbuzz-devel
 # Chromium requires icu 55
-# BuildRequires: libicu-devel
+BuildRequires: libicu-devel
 BuildRequires: jsoncpp-devel
 BuildRequires: libevent-devel
 BuildRequires: libjpeg-turbo-devel
@@ -88,14 +81,16 @@ BuildRequires: opus-devel
 BuildRequires: snappy-devel
 BuildRequires: speex-devel
 BuildRequires: zlib-devel
+BuildRequires: libxml2-devel
+
 # linux_link_*
 BuildRequires: pciutils-devel
 BuildRequires: pulseaudio-libs-devel
+BuildRequires: krb5-devel
 # install desktop files
 BuildRequires: desktop-file-utils
 
-# for nacl toolchain.
-BuildRequires: lib32-runtime
+BuildRequires: yasm
 
 Requires:   desktop-file-utils
 Requires:   hicolor-icon-theme
@@ -105,7 +100,7 @@ Requires:   hicolor-icon-theme
 %{summary}
 
 %prep
-%setup -q
+%setup -q -n chromium-%{version}
 %patch0 -p1
 %patch3 -p1
 %patch4 -p1
@@ -113,28 +108,22 @@ Requires:   hicolor-icon-theme
 %patch6 -p1
 
 %patch100 -p1 -d third_party/pdfium
-
-tar zxf %{SOURCE10} -C native_client
+%patch101 -p1
 
 # https://groups.google.com/a/chromium.org/d/topic/chromium-packagers/9JX1N2nf4PU/discussion
 touch chrome/test/data/webui/i18n_process_css_test.html
 
+# Remove bundled ICU; its header files appear to get picked up instead of
+# the system ones, leading to errors during the final link stage.
+# https://groups.google.com/a/chromium.org/d/topic/chromium-packagers/BNGvJc08B6Q
+find third_party/icu -type f \! -regex '.*\.\(gyp\|gypi\|isolate\)' -delete
 
 %build
-#prepare nacl toolchain
-#download
-#python2 build/download_nacl_toolchains.py  --packages nacl_x86_newlib,pnacl_newlib,pnacl_translator sync
-#extract
-python2 build/download_nacl_toolchains.py  --packages nacl_x86_newlib,pnacl_newlib,pnacl_translator extract
-
-#we set this to use 32bit runtime library.
-export LD_LIBRARY_PATH=/l32
-
-./build/linux/unbundle/replace_gyp_files.py \
+chromium_config=(
     -Duse_system_expat=1 \
     -Duse_system_flac=1 \
     -Duse_system_harfbuzz=1 \
-    -Duse_system_icu=0 \
+    -Duse_system_icu=1 \
     -Duse_system_jsoncpp=1 \
     -Duse_system_libevent=1 \
     -Duse_system_libjpeg=1 \
@@ -144,26 +133,14 @@ export LD_LIBRARY_PATH=/l32
     -Duse_system_opus=1 \
     -Duse_system_snappy=1 \
     -Duse_system_speex=1 \
-    -Duse_system_zlib=1
-
-# find third_party/icu -type f '!' -regex '.*\.\(gyp\|gypi\|isolate\)' -delete
-
-GYP_GENERATORS=ninja ./build/gyp_chromium --depth=. \
-    -Duse_system_expat=1 \
-    -Duse_system_flac=1 \
-    -Duse_system_harfbuzz=1 \
-    -Duse_system_icu=0 \
-    -Duse_system_jsoncpp=1 \
-    -Duse_system_libevent=1 \
-    -Duse_system_libjpeg=1 \
-    -Duse_system_libpng=1 \
-    -Duse_system_libvpx=0 \
-    -Duse_system_libwebp=1 \
-    -Duse_system_opus=1 \
-    -Duse_system_snappy=1 \
-    -Duse_system_speex=1 \
-    -Duse_system_zlib=1 \
+    -Duse_system_zlib=0 \
+    -Duse_system_yasm=1 \
+    -Duse_system_libxml=1 \
+    -Duse_system_ffmpeg=0 \
+    -Dffmpeg_branding=Chrome \
+    -Dproprietary_codecs=1 \
     -Duse_gconf=0 \
+    -Duse_gnome_keyring=0 \
     -Dlinux_use_bundled_gold=0 \
     -Dlinux_use_bundled_binutils=0 \
     -Dlinux_link_gsettings=1 \
@@ -173,20 +150,22 @@ GYP_GENERATORS=ninja ./build/gyp_chromium --depth=. \
     -Dlinux_link_libpci=1 \
     -Dlinux_link_libspeechd=0 \
     -Dlinux_link_pulseaudio=1 \
-    -Dicu_use_data_file_flag=1 \
+    -Dicu_use_data_file_flag=0 \
     -Dclang=0 \
     -Dwerror= \
     -Ddisable_fatal_linker_warnings=1 \
     -Denable_hotwording=0 \
-    -Denable_nacl=1 \
-    -Denable_pnacl=1 \
+    -Denable_hangout_services_extension=1 \
+    -Dlogging_like_official_build=1 \
+    -Ddisable_nacl=1 \
     -Ddisable_glibc=1 \
     -Dgoogle_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM \
     -Dgoogle_default_client_id=413772536636.apps.googleusercontent.com \
-    -Dgoogle_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4 \
+    -Dgoogle_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4)
 
-#./build/download_nacl_toolchains.py --packages \
-#    nacl_x86_glibc,nacl_x86_newlib,pnacl_newlib,pnacl_translator sync --extract
+./build/linux/unbundle/replace_gyp_files.py "${chromium_config[@]}" 
+
+./build/gyp_chromium --depth=. "${chromium_config[@]}"  
 
 ninja-build -C out/Release chrome chrome_sandbox chromedriver
 
@@ -206,17 +185,11 @@ install -m 644 out/Release/chrome.1 %{buildroot}%{_mandir}/man1/chromium-browser
 install -m 755 out/Release/chrome %{buildroot}%{chromiumdir}/chromium-browser
 install -m 4755 out/Release/chrome_sandbox %{buildroot}%{chromiumdir}/chrome-sandbox
 install -m 755 out/Release/chromedriver %{buildroot}%{chromiumdir}/
-install -m 644 out/Release/icudtl.dat %{buildroot}%{chromiumdir}/
+#install -m 644 out/Release/icudtl.dat %{buildroot}%{chromiumdir}/
 install -m 644 out/Release/natives_blob.bin %{buildroot}%{chromiumdir}/
 install -m 644 out/Release/snapshot_blob.bin %{buildroot}%{chromiumdir}/
 install -m 644 out/Release/*.pak %{buildroot}%{chromiumdir}/
 install -m 644 out/Release/locales/*.pak %{buildroot}%{chromiumdir}/locales/
-
-#nacl
-install -m 755 out/Release/nacl_helper %{buildroot}%{chromiumdir}/
-install -m 755 out/Release/nacl_helper_bootstrap %{buildroot}%{chromiumdir}/
-cp out/Release/nacl_irt_*.nexe %{buildroot}%{chromiumdir}/
-chmod 755  %{buildroot}%{chromiumdir}/*.nexe
 
 for i in 22 24 48 64 128 256; do
     mkdir -p %{buildroot}%{_datadir}/icons/hicolor/${i}x${i}/apps
@@ -250,8 +223,7 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 %{chromiumdir}/chromium-browser
 %{chromiumdir}/chrome-sandbox
 %{chromiumdir}/chromedriver
-%{chromiumdir}/nacl*
-%{chromiumdir}/icudtl.dat
+# {chromiumdir}/icudtl.dat
 %{chromiumdir}/natives_blob.bin
 %{chromiumdir}/snapshot_blob.bin
 %{chromiumdir}/*.pak
@@ -261,6 +233,10 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 
 
 %changelog
+* Sun Dec 13 2015 Cjacker <cjacker@foxmail.com> - 47.0.2526.80-2
+- Update to latest stable version 47.0.2526.80
+- Disable nacl
+
 * Sat Nov 28 2015 Cjacker <cjacker@foxmail.com> - 46.0.2490.86-4
 - Enable nacl
 
