@@ -1,5 +1,5 @@
 Name: isoftapp
-Version: 1.0.0
+Version: 1.0.1
 Release: 1%{?dist}
 Summary: iSOFT AppStore Skeleton
 
@@ -47,6 +47,9 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 %{_bindir}/isoftapp
 
 %changelog
+* Mon Dec 14 2015 Leslie Zhai <xiang.zhai@i-soft.com.cn>
+- Cleanup command info. 
+
 * Fri Dec 11 2015 Leslie Zhai <xiang.zhai@i-soft.com.cn>
 - Full features support by fujiang.
 - Fix upgrade issue.
