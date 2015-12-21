@@ -25,7 +25,7 @@ BuildRequires:  kf5-kdbusaddons-devel
 BuildRequires:  kf5-kdeclarative-devel
 BuildRequires:  kf5-ki18n-devel
 BuildRequires:  kf5-kpackage-devel
-
+BuildRequires:  pkgconfig(xcb) pkgconfig(xcb-event)
 
 %description
 %{summary}
