@@ -1,6 +1,6 @@
 Name: wine32 
 Version: 1.8
-Release: 7 
+Release: 8 
 Summary: A compatibility layer for windows applications
 
 License: LGPLv2+ 
@@ -94,6 +94,9 @@ done
 %{_datadir}/icons/hicolor/scalable/apps/*.svg
 
 %changelog
+* Sun Dec 20 2015 Cjacker <cjacker@foxmail.com> - 1.8-8
+- Update to 1.8 official release
+
 * Tue Dec 15 2015 Cjacker <cjacker@foxmail.com> - 1.8-7
 - Update to 1.8 rc4
 
