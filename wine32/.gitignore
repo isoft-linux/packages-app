@@ -42,3 +42,17 @@ wine-openal-1.8-8.i686.rpm
 wine-opencl-1.8-8.i686.rpm
 wine-pulseaudio-1.8-8.i686.rpm
 wine-systemd-1.8-8.noarch.rpm
+wine-1.8-9.src.rpm
+wine-alsa-1.8-9.i686.rpm
+wine-arial-fonts-1.8-9.noarch.rpm
+wine-capi-1.8-9.i686.rpm
+wine-cms-1.8-9.i686.rpm
+wine-common-1.8-9.noarch.rpm
+wine-core-1.8-9.i686.rpm
+wine-desktop-1.8-9.noarch.rpm
+wine-filesystem-1.8-9.noarch.rpm
+wine-ldap-1.8-9.i686.rpm
+wine-openal-1.8-9.i686.rpm
+wine-opencl-1.8-9.i686.rpm
+wine-pulseaudio-1.8-9.i686.rpm
+wine-systemd-1.8-9.noarch.rpm
