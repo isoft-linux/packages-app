@@ -1,6 +1,6 @@
 Name: kcm-pointing-devices
 Version: 0.1 
-Release: 4
+Release: 5
 Summary: Pointing devices configuration utility for KF5
 
 License: GPLv3+
@@ -13,6 +13,8 @@ Source1: Messages.sh
 Source2: kcm_pointingdevices-zh_CN.po
 
 Patch0: pointing-devices-desktop-i18n.patch
+#the window size of 'kcmshell5 kcm_pointingdevices' is not correct.
+Patch1: pointing-devices-kcm-fix-prefer-size.patch
 
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
@@ -31,8 +33,7 @@ BuildRequires:  pkgconfig(xcb) pkgconfig(xcb-event)
 %{summary}
 
 %prep
-%setup -q -n pointing-devices-kcm
-%patch0 -p1
+%autosetup -n pointing-devices-kcm -p1
 
 %build
 mkdir -p %{_target_platform}
@@ -58,6 +59,9 @@ msgfmt %{SOURCE2} -o %{buildroot}%{_datadir}/locale/zh_CN/LC_MESSAGES/kcm_pointi
 %{_kf5_datadir}/kpackage/kcms/kcm_pointingdevices
 
 %changelog
+* Tue Dec 22 2015 Cjacker <cjacker@foxmail.com> - 0.1-5
+- Fix kcmshell5 kcm_pointingdevice window size
+
 * Sat Dec 19 2015 Cjacker <cjacker@foxmail.com> - 0.1-4
 - Add zh_CN po
 
