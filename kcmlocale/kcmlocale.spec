@@ -9,12 +9,15 @@ Patch0: remove-flags.patch
 
 BuildRequires: cmake
 BuildRequires: extra-cmake-modules
+BuildRequires: kf5-rpm-macros
 BuildRequires: gettext
 BuildRequires: qt5-qtbase-devel
 BuildRequires: plasma-systemsettings-devel
+BuildRequires: kf5-kdelibs4support-devel
+BuildRequires: kf5-ki18n-devel
+BuildRequires: kf5-kcmutils-devel kf5-kglobalaccel-devel
 
 Requires: kf5-kdelibs4support
-
 Requires: kf5-ki18n
 
 %description
