@@ -1,5 +1,5 @@
 Name: isoftapp
-Version: 1.0.2
+Version: 2.0.0
 Release: 1%{?dist}
 Summary: iSOFT AppStore Skeleton
 
@@ -15,6 +15,14 @@ BuildRequires: popt-devel
 BuildRequires: uriparser-devel
 BuildRequires: libcurl-devel
 BuildRequires: sqlite-devel
+BuildRequires: qt5-qtbase-devel
+BuildRequires: qtsingleapplication-qt5-devel
+
+Requires: systemd
+
+Requires(post): systemd-units
+Requires(preun): systemd-units
+Requires(postun): systemd-units
 
 
 %description
@@ -36,17 +44,36 @@ make %{?_smp_mflags} -C %{_target_platform}
 %install
 make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 
+%find_lang org.isoftlinux.Isoftapp
 
-%files
+%post
+%systemd_post isoftapp-daemon.service
+
+%preun
+%systemd_preun isoftapp-daemon.service
+
+%postun
+%systemd_postun isoftapp-daemon.service
+
+
+%files -f org.isoftlinux.Isoftapp.lang
 %{_sysconfdir}/isoftapp/default.conf.example
 %{_sysconfdir}/isoftapp/config.d/other.conf.example
+%{_sysconfdir}/xdg/autostart/isoftapp_systray.desktop
 %{_datadir}/isoftapp/pkgcache.db
+%{_datadir}/dbus-1/system-services/org.isoftlinux.Isoftapp.service
+%{_unitdir}/isoftapp-daemon.service
 %{_bindir}/isoft-genpkglist
 %{_bindir}/isoft-gensrclist
 %{_bindir}/isoft-genbasedir
 %{_bindir}/isoftapp
+%{_bindir}/isoftapp-daemon
+%{_bindir}/isoftapp_systray
 
 %changelog
+* Tue Dec 29 2015 Leslie Zhai <xiang.zhai@i-soft.com.cn>
+- isoftapp system dbus service implementation by fujiang.
+
 * Tue Dec 15 2015 Leslie Zhai <xiang.zhai@i-soft.com.cn>
 - Fix remove package not in cache issue.
 
