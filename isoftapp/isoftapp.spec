@@ -1,5 +1,5 @@
 Name: isoftapp
-Version: 2.0.0
+Version: 2.1.0
 Release: 1%{?dist}
 Summary: iSOFT AppStore Skeleton
 
@@ -78,6 +78,7 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 %changelog
 * Tue Dec 29 2015 Leslie Zhai <xiang.zhai@i-soft.com.cn>
 - isoftapp system dbus service implementation by fujiang.
+- Fix search hang issue by fujiang.
 
 * Tue Dec 15 2015 Leslie Zhai <xiang.zhai@i-soft.com.cn>
 - Fix remove package not in cache issue.
