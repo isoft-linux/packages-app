@@ -9,7 +9,9 @@ Source0: %{name}-%{version}.tar.bz2
 
 BuildRequires: cmake
 BuildRequires: pkgconfig
+BuildRequires: gettext
 BuildRequires: glib2-devel
+BuildRequires: dbus-glib-devel
 BuildRequires: librpm-devel
 BuildRequires: popt-devel
 BuildRequires: uriparser-devel
@@ -60,11 +62,14 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 %{_sysconfdir}/isoftapp/default.conf.example
 %{_sysconfdir}/isoftapp/config.d/other.conf.example
 %{_sysconfdir}/xdg/autostart/isoftapp_systray.desktop
+%{_sysconfdir}/dbus-1/system.d/org.isoftlinux.Isoftapp.conf
 %{_datadir}/isoftapp/pkgcache.db
+%{_datadir}/dbus-1/interfaces/org.isoftlinux.Isoftapp.xml
 %{_datadir}/dbus-1/system-services/org.isoftlinux.Isoftapp.service
 %{_unitdir}/isoftapp-daemon.service
 %{_bindir}/isoft-genpkglist
 %{_bindir}/isoft-gensrclist
+%{_bindir}/isoft-countpkglist
 %{_bindir}/isoft-genbasedir
 %{_bindir}/isoftapp
 %{_bindir}/isoftapp-daemon
