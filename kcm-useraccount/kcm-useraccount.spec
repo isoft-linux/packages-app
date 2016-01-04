@@ -1,6 +1,6 @@
 Name:           kcm-useraccount
 Version:        5.4.2
-Release:        1
+Release:        2
 Summary:        User accounts manager for plasma workspace 
 
 License:        GPLv3+
@@ -47,6 +47,9 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 %{_kf5_datadir}/kservices5/kcm_useraccount.desktop
 
 %changelog
+* Mon Jan 04 2016 fujiang <fujiang.zhu@i-soft.com.cn> - 5.4.2-2
+- change password rule
+
 * Tue Nov 24 2015 Leslie Zhai <xiang.zhai@i-soft.com.cn>
 - Fix polkit sync API blocking issue.
 
