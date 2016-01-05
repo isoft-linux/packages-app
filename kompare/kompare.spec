@@ -1,7 +1,7 @@
 Name:    kompare
 Summary: Diff tool
 Version: 15.12.0
-Release: 2%{?dist}
+Release: 3%{?dist}
 
 License: GPLv2+ and GFDL
 URL:     https://projects.kde.org/projects/kde/kdesdk/kompare
@@ -63,6 +63,7 @@ developing applications that use %{name}.
 
 %prep
 %setup
+sed -e 's|Categories=.*|#Categories=Qt;KDE;Development;|' -i org.kde.kompare.desktop
 
 
 %build
@@ -122,6 +123,9 @@ fi
 
 
 %changelog
+* Tue Jan 05 2016 sulit <sulitsrc@gmail.com> - 15.12.0-3
+- remove the app from kickoff
+
 * Thu Dec 17 2015 Cjacker <cjacker@foxmail.com> - 15.12.0-2
 - Update
 
