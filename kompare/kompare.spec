@@ -1,7 +1,7 @@
 Name:    kompare
 Summary: Diff tool
 Version: 15.12.0
-Release: 3%{?dist}
+Release: 4%{?dist}
 
 License: GPLv2+ and GFDL
 URL:     https://projects.kde.org/projects/kde/kdesdk/kompare
@@ -63,7 +63,7 @@ developing applications that use %{name}.
 
 %prep
 %setup
-sed -e 's|Categories=.*|#Categories=Qt;KDE;Development;|' -i org.kde.kompare.desktop
+echo "NoDisplay=true" >> org.kde.kompare.desktop
 
 
 %build
@@ -123,6 +123,9 @@ fi
 
 
 %changelog
+* Wed Jan 06 2016 sulit <sulitsrc@gmail.com> - 15.12.0-4
+- fixed "remove the app from kickoff" error
+
 * Tue Jan 05 2016 sulit <sulitsrc@gmail.com> - 15.12.0-3
 - remove the app from kickoff
 
