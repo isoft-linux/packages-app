@@ -1,6 +1,6 @@
 Name: firstboot-qt
 Version: 1.0
-Release: 9 
+Release: 10 
 Summary: First boot setup wizard
 
 License: GPLv2
@@ -37,6 +37,9 @@ make GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 DESTDIR=%{buildroot} install -C bui
 %{_datadir}/apps/firstboot/*
 
 %changelog
+* Fri Jan 08 2016 fj <fujiang.zhu@i-soft.com.cn> - 1.0-10
+- set lc=utf8 when config grub 
+
 * Mon Jan 04 2016 fj <fujiang.zhu@i-soft.com.cn> - 1.0-9
 - modify grub;change pwd; 
 
