@@ -1,10 +1,11 @@
 Name: firstboot-qt
 Version: 1.0
-Release: 10 
+Release: 11
 Summary: First boot setup wizard
 
 License: GPLv2
 Source0: %{name}-%{version}.tar.gz
+Patch1: firstboot-not-run.patch
 BuildRequires: git cmake qt5-qtbase-devel qt5-qttools-devel gnome-desktop3-devel
 BuildRequires: kf5-ki18n-devel
 Requires: qt5-qtbase
@@ -14,6 +15,7 @@ The setup wizard after system installed and first booting.
 
 %prep
 %setup -n %{name}
+%patch1 -p1
 
 %build
 mkdir -p build 
@@ -37,6 +39,9 @@ make GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 DESTDIR=%{buildroot} install -C bui
 %{_datadir}/apps/firstboot/*
 
 %changelog
+* Fri Jan 08 2016 xiaotian.wu@i-soft.com.cn - 1.0-11
+- fixed bug 13171.
+
 * Fri Jan 08 2016 fj <fujiang.zhu@i-soft.com.cn> - 1.0-10
 - set lc=utf8 when config grub 
 
