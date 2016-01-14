@@ -94,7 +94,7 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 
 
 %changelog
-* Thu Jan 14 2015 Leslie Zhai <xiang.zhai@i-soft.com.cn>
+* Thu Jan 14 2016 Leslie Zhai <xiang.zhai@i-soft.com.cn>
 - Fix update xml file exsist issue.
 
 * Fri Dec 11 2015 Leslie Zhai <xiang.zhai@i-soft.com.cn>
