@@ -91,6 +91,7 @@ BuildRequires: krb5-devel
 BuildRequires: desktop-file-utils
 
 BuildRequires: yasm
+BuildRequires: libxslt-devel
 
 Requires:   desktop-file-utils
 Requires:   hicolor-icon-theme
