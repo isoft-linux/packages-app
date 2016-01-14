@@ -1,6 +1,6 @@
 Name: chromium
 Version: 47.0.2526.80  
-Release: 2%{?dist}
+Release: 3%{?dist}
 Summary: Open-source version of Google Chrome web browser
 
 License: BSD and LGPLv2+
@@ -233,6 +233,9 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 
 
 %changelog
+* Thu Jan 14 2016 xiaotian.wu@i-soft.com.cn - 47.0.2526.80-3
+- save complete html support kde5 if use kdialog
+
 * Sun Dec 13 2015 Cjacker <cjacker@foxmail.com> - 47.0.2526.80-2
 - Update to latest stable version 47.0.2526.80
 - Disable nacl
