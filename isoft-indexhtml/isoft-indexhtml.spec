@@ -1,8 +1,8 @@
 #NOTE, this is chromium default settings and only works with chromium.
-%define checksum dfc1cdd820aa00459c639acf4e3776ca
+%define checksum 0fb4c2278896d4d08ccac8195829e8f7
 
 Name: isoft-indexhtml
-Version: 4.1
+Version: 4.2
 Release: 2
 Summary: The default settings and first startup page of Chromium browser.
 
@@ -42,6 +42,12 @@ install -m 0644 %{PATCH1} %{buildroot}%{_datadir}/indexhtml
 %{_datadir}/indexhtml/*
 
 %changelog
+* Fri Jan 08 2016 xiaotian.wu@i-soft.com.cn - 4.2-2
+- fixed desktop name of bookmark.
+
+* Fri Dec 25 2015 xiaotian.wu@i-soft.com.cn - 4.2-1
+- new version, change desktop name.
+
 * Fri Nov 27 2015 kun.li@i-soft.com.cn - 4.1-2
 - Add Bookmarks
 
@@ -53,5 +59,3 @@ install -m 0644 %{PATCH1} %{buildroot}%{_datadir}/indexhtml
 
 * Wed Nov 04 2015 Cjacker <cjacker@foxmail.com> - 4.0-2
 - Initial build
-
-

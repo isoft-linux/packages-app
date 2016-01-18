@@ -1,6 +1,6 @@
 Name: chromium
 Version: 47.0.2526.80  
-Release: 2%{?dist}
+Release: 4%{?dist}
 Summary: Open-source version of Google Chrome web browser
 
 License: BSD and LGPLv2+
@@ -91,6 +91,7 @@ BuildRequires: krb5-devel
 BuildRequires: desktop-file-utils
 
 BuildRequires: yasm
+BuildRequires: libxslt-devel
 
 Requires:   desktop-file-utils
 Requires:   hicolor-icon-theme
@@ -177,7 +178,7 @@ mkdir -p %{buildroot}%{_bindir}
 mkdir -p %{buildroot}%{chromiumdir}/locales
 mkdir -p %{buildroot}%{_mandir}/man1
 mkdir -p %{buildroot}%{_datadir}/applications
-sed -e "s|@@CHROMIUMDIR@@|%{chromiumdir}|" -e "s|@@BUILDTARGET@@|iSoft Enterprise Desktop|" \
+sed -e "s|@@CHROMIUMDIR@@|%{chromiumdir}|" -e "s|@@BUILDTARGET@@|iSoft Desktop|" \
     %{SOURCE1} > chromium-browser.sh
 install -m 755 chromium-browser.sh %{buildroot}%{_bindir}/chromium-browser
 desktop-file-install --dir=%{buildroot}%{_datadir}/applications %{SOURCE2}
@@ -233,6 +234,12 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 
 
 %changelog
+* Fri Jan 15 2016 xiaotian.wu@i-soft.com.cn - 47.0.2526.80-4
+- Rename to iSoft Desktop on about page.
+
+* Thu Jan 14 2016 xiaotian.wu@i-soft.com.cn - 47.0.2526.80-3
+- save complete html support kde5 if use kdialog
+
 * Sun Dec 13 2015 Cjacker <cjacker@foxmail.com> - 47.0.2526.80-2
 - Update to latest stable version 47.0.2526.80
 - Disable nacl

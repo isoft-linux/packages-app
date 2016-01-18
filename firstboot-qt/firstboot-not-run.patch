@@ -1,0 +1,23 @@
+Index: firstboot-qt/data/firstboot.service
+===================================================================
+--- firstboot-qt.orig/data/firstboot.service
++++ firstboot-qt/data/firstboot.service
+@@ -1,6 +1,6 @@
+ [Unit]
+ Description=first config system
+-After=systemd-user-sessions.service 
++After=systemd-user-sessions.service plymouth-quit.service
+ Before=display-manager.service 
+ 
+ [Service]
+Index: firstboot-qt/data/run-firstboot
+===================================================================
+--- firstboot-qt.orig/data/run-firstboot
++++ firstboot-qt/data/run-firstboot
+@@ -19,5 +19,4 @@ kwin_x11&
+ exec /bin/firstboot-qt
+ EOF
+ 
+-startx /tmp/.firstboot-script --/usr/bin/X :0
+-
++xinit /tmp/.firstboot-script -- /usr/bin/X :0

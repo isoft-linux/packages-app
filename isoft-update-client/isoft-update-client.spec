@@ -1,5 +1,5 @@
 Name: isoft-update-client
-Version: 1.0.0
+Version: 1.0.2
 Release: 1%{?dist}
 Summary: iSOFT Update Client
 
@@ -94,6 +94,12 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 
 
 %changelog
+* Fri Jan 15 2016 Leslie Zhai <xiang.zhai@i-soft.com.cn>
+- Fix daemon update duplicate upt packages by fujiang.
+
+* Thu Jan 14 2016 Leslie Zhai <xiang.zhai@i-soft.com.cn>
+- Fix update xml file exsist issue.
+
 * Fri Dec 11 2015 Leslie Zhai <xiang.zhai@i-soft.com.cn>
 - Changed the name of the enum to HiddenStatus.
 
