@@ -50,6 +50,9 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 * Fri Jan 22 2016 Leslie Zhai <xiang.zhai@i-soft.com.cn>
 - Release v5.4.3 for fujiang.
 
+* Mon Jan 18 2016 fj <fujiang.zhu@i-soft.com.cn> - 5.4.2-5
+- Modify zh_cn.po
+
 * Mon Jan 11 2016 fj <fujaing.zhu@i-soft.com.cn> - 5.4.2-4
 - Update check pwd routine 
 

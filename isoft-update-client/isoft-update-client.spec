@@ -1,6 +1,6 @@
 Name: isoft-update-client
 Version: 1.0.2
-Release: 1%{?dist}
+Release: 2%{?dist}
 Summary: iSOFT Update Client
 
 License: GPLv2 or GPLv3
@@ -94,6 +94,9 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 
 
 %changelog
+* Tue Jan 19 2016 fj <fujiang.zhu@i-soft.com.cn> - 1.0.2-2
+- Update qml
+
 * Fri Jan 15 2016 Leslie Zhai <xiang.zhai@i-soft.com.cn>
 - Fix daemon update duplicate upt packages by fujiang.
 
