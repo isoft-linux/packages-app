@@ -1,6 +1,6 @@
 Name:           kcm-useraccount
-Version:        5.4.2
-Release:        4
+Version:        5.4.3
+Release:        1
 Summary:        User accounts manager for plasma workspace 
 
 License:        GPLv3+
@@ -47,6 +47,9 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 %{_kf5_datadir}/kservices5/kcm_useraccount.desktop
 
 %changelog
+* Fri Jan 22 2016 Leslie Zhai <xiang.zhai@i-soft.com.cn>
+- Release v5.4.3 for fujiang.
+
 * Mon Jan 11 2016 fj <fujaing.zhu@i-soft.com.cn> - 5.4.2-4
 - Update check pwd routine 
 
