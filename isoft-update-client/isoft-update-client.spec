@@ -1,6 +1,6 @@
 Name: isoft-update-client
-Version: 1.0.2
-Release: 2%{?dist}
+Version: 1.0.3
+Release: 1%{?dist}
 Summary: iSOFT Update Client
 
 License: GPLv2 or GPLv3
@@ -94,6 +94,9 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 
 
 %changelog
+* Fri Jan 22 2016 Leslie Zhai <xiang.zhai@i-soft.com.cn>
+- Release v1.0.3 for fujiang.
+
 * Tue Jan 19 2016 fj <fujiang.zhu@i-soft.com.cn> - 1.0.2-2
 - Update qml
 
