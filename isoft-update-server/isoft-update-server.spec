@@ -1,6 +1,6 @@
 Name: isoft-update-server 
 Version: 1.0
-Release: 2
+Release: 3
 Summary: iSoft update utility(Server side)
 Vendor:  iSoft
 
@@ -39,6 +39,9 @@ cp %{_builddir}/%{name}-%{version}/doc/update.xsd %{buildroot}%{_datadir}/%{name
 %{_datadir}/isoft-update-server/update.xsd
 
 %changelog
+* Mon Jan 25 2016 sulit <sulitsrc@gmail.com> - 1.0-3
+- update version to 1.1
+
 * Sun Oct 25 2015 Cjacker <cjacker@foxmail.com> - 1.0-2
 - Rebuild for new 4.0 release
 
