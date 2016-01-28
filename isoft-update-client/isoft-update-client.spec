@@ -1,5 +1,5 @@
 Name: isoft-update-client
-Version: 1.0.3
+Version: 1.0.4
 Release: 1%{?dist}
 Summary: iSOFT Update Client
 
@@ -94,6 +94,9 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 
 
 %changelog
+* Thu Jan 28 2016 fj <fujiang.zhu@i-soft.com.cn>
+- Update qml,add i18n
+
 * Fri Jan 22 2016 Leslie Zhai <xiang.zhai@i-soft.com.cn>
 - Release v1.0.3 for fujiang.
 
