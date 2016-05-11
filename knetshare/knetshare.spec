@@ -1,6 +1,6 @@
 Name: knetshare
 Version: 0.4.0
-Release: 3
+Release: 4
 Summary: netshare for KF5
 
 License: GPLv2 or GPLv3
@@ -67,6 +67,9 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 %{_datadir}/locale/zh_CN/LC_MESSAGES/knetshare.mo
 
 %changelog
+* Wed May 11 2016 x WangMing <ming.wang@i-soft.com.cn> 0.4.0-4
+- Fixed plugin can not shown.
+
 * Wed May 11 2016 WangMing <ming.wang@i-soft.com.cn> - 0.4.0-2
 - Add file shared service base on phodav.
 
