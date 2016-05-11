@@ -48,6 +48,7 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 
 # plugin of dolphin
 %{_kf5_qtplugindir}/phodavsharedplugin.so
+%{_datadir}/kservices5/fileshared.desktop
 
 # %{_datadir}/dbus-1/interfaces/org.webdav.server.configuration.xml
 
