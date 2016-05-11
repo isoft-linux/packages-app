@@ -1,6 +1,6 @@
 Name: knetshare
 Version: 0.4.0
-Release: 4
+Release: 5
 Summary: netshare for KF5
 
 License: GPLv2 or GPLv3
