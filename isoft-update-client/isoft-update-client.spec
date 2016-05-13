@@ -1,5 +1,5 @@
 Name: isoft-update-client
-Version: 1.0.4
+Version: 1.0.5
 Release: 1%{?dist}
 Summary: iSOFT Update Client
 
@@ -94,6 +94,9 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 
 
 %changelog
+* Fri May 13 2016 fj <fujiang.zhu@i-soft.com.cn> - 1.0.5-1
+- set lc_all for grub.cfg
+
 * Thu Jan 28 2016 fj <fujiang.zhu@i-soft.com.cn>
 - Update qml,add i18n
 
