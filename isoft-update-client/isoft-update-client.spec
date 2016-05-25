@@ -1,6 +1,6 @@
 Name: isoft-update-client
 Version: 1.0.5
-Release: 1%{?dist}
+Release: 2%{?dist}
 Summary: iSOFT Update Client
 
 License: GPLv2 or GPLv3
@@ -94,6 +94,9 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 
 
 %changelog
+* Wed May 25 2016 fj <fujiang.zhu@i-soft.com.cn> - 1.0.5-2
+- use replacepkg for rpm api 
+
 * Fri May 13 2016 fj <fujiang.zhu@i-soft.com.cn> - 1.0.5-1
 - set lc_all for grub.cfg
 
