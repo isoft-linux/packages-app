@@ -1,6 +1,6 @@
 Name: knetshare
 Version: 0.4.0
-Release: 7
+Release: 8
 Summary: netshare for KF5
 
 License: GPLv2 or GPLv3
@@ -68,10 +68,13 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 %{_datadir}/locale/zh_CN/LC_MESSAGES/knetshare.mo
 
 %changelog
-* Thu Jun 02 2016 x WangMing <ming.wang@i-soft.com.cn> 0.4.0-6
+* Thu Jun 02 2016 WangMing <ming.wang@i-soft.com.cn> 0.4.0-8
+- restart when readonly option changed.
+
+* Thu Jun 02 2016 WangMing <ming.wang@i-soft.com.cn> 0.4.0-6
 - Validate port range and manage shared directory.
 
-* Wed May 11 2016 x WangMing <ming.wang@i-soft.com.cn> 0.4.0-4
+* Wed May 11 2016 WangMing <ming.wang@i-soft.com.cn> 0.4.0-4
 - Fixed plugin can not shown.
 
 * Wed May 11 2016 WangMing <ming.wang@i-soft.com.cn> - 0.4.0-2
