@@ -1,6 +1,6 @@
 Name: knetshare
 Version: 0.4.0
-Release: 9
+Release: 11
 Summary: netshare for KF5
 
 License: GPLv2 or GPLv3
@@ -68,7 +68,10 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 %{_datadir}/locale/zh_CN/LC_MESSAGES/knetshare.mo
 
 %changelog
-* Thu Jun 02 2016 WangMing <ming.wang@i-soft.com.cn> 0.4.0-8
+* Thu Jun 02 2016 WangMing <ming.wang@i-soft.com.cn> - 0.4.0-11
+- Add dependencies to po target.
+
+* Thu Jun 02 2016 WangMing <ming.wang@i-soft.com.cn> 0.4.0-9
 - restart when readonly option changed.
 
 * Thu Jun 02 2016 WangMing <ming.wang@i-soft.com.cn> 0.4.0-6
