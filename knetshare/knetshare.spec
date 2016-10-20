@@ -10,6 +10,7 @@ Source0: %{name}-%{version}.tar.bz2
 BuildRequires: extra-cmake-modules
 BuildRequires: kf5-rpm-macros
 BuildRequires: gettext
+BuildRequires: openssl-devel
 BuildRequires: qt5-qtbase-devel
 BuildRequires: kf5-ki18n-devel
 BuildRequires: kf5-kio-devel
@@ -19,7 +20,8 @@ BuildRequires: kf5-kwidgetsaddons-devel
 BuildRequires: kf5-kdelibs4support-devel
 
 Requires: kf5-filesystem
-
+Requires: openssl
+Requires: kde-cli-tools
 
 %description
 netshare for KF5.
