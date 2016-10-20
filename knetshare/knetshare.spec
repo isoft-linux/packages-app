@@ -1,6 +1,6 @@
 Name: knetshare
 Version: 0.4.0
-Release: 10
+Release: 11
 Summary: netshare for KF5
 
 License: GPLv2 or GPLv3
@@ -68,6 +68,9 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 %{_datadir}/locale/zh_CN/LC_MESSAGES/knetshare.mo
 
 %changelog
+* Thu Oct 20 2016 x <ming.wang@i-soft.com.cn> - 0.4.0-11
+- Integrate account manager in dolphin and KConfig Module.
+
 * Thu Jun 02 2016 WangMing <ming.wang@i-soft.com.cn> - 0.4.0-10
 - Add dependencies to po target.
 
