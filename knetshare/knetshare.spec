@@ -1,6 +1,6 @@
 Name: knetshare
 Version: 0.4.0
-Release: 12
+Release: 14
 Summary: netshare for KF5
 
 License: GPLv2 or GPLv3
@@ -71,6 +71,9 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 %{_datadir}/locale/zh_CN/LC_MESSAGES/knetshare.mo
 
 %changelog
+* Thu Oct 20 2016 x <ming.wang@i-soft.com.cn> - 0.4.0-14
+- Fixed autostart problem.
+
 * Thu Oct 20 2016 x <ming.wang@i-soft.com.cn> - 0.4.0-12
 - Integrate account manager in dolphin and KConfig Module.
 
