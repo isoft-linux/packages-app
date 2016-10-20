@@ -18,6 +18,7 @@ BuildRequires: kf5-kcoreaddons-devel
 BuildRequires: kf5-kdoctools-devel
 BuildRequires: kf5-kwidgetsaddons-devel
 BuildRequires: kf5-kdelibs4support-devel
+BuildRequires: kf5-plasma-devel
 
 Requires: kf5-filesystem
 Requires: openssl
