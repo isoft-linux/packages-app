@@ -3,7 +3,7 @@
 
 Name: isoft-indexhtml
 Version: 4.2
-Release: 2
+Release: 3
 Summary: The default settings and first startup page of Chromium browser.
 
 License: Public Domain 
@@ -42,6 +42,9 @@ install -m 0644 %{PATCH1} %{buildroot}%{_datadir}/indexhtml
 %{_datadir}/indexhtml/*
 
 %changelog
+* Thu Nov 24 2016 sulit <sulitsrc@gmail.com> - 4.2-3
+- modify isoft company address
+
 * Fri Jan 08 2016 xiaotian.wu@i-soft.com.cn - 4.2-2
 - fixed desktop name of bookmark.
 
