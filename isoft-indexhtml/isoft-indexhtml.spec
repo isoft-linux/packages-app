@@ -2,8 +2,8 @@
 %define checksum 0fb4c2278896d4d08ccac8195829e8f7
 
 Name: isoft-indexhtml
-Version: 4.2
-Release: 3
+Version: 4.3
+Release: 1
 Summary: The default settings and first startup page of Chromium browser.
 
 License: Public Domain 
@@ -42,7 +42,7 @@ install -m 0644 %{PATCH1} %{buildroot}%{_datadir}/indexhtml
 %{_datadir}/indexhtml/*
 
 %changelog
-* Thu Nov 24 2016 sulit <sulitsrc@gmail.com> - 4.2-3
+* Thu Nov 24 2016 sulit <sulitsrc@gmail.com> - 4.3-1
 - modify isoft company address
 
 * Fri Jan 08 2016 xiaotian.wu@i-soft.com.cn - 4.2-2
