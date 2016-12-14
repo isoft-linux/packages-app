@@ -1,6 +1,6 @@
 Name: isoft-sysopt
 Version: 1.0.0
-Release: 1
+Release: 2
 Summary: viewing internet speed and memory use on your system.
 
 License: GPLv2 or GPLv3
@@ -44,6 +44,9 @@ popd
 %{_libdir}/python2.7/dist-packages/isoft-assistant-daemon/*
 
 %changelog
+* Wed Dec 14 2016 x - 1.0.0-2
+- Code optimization, add polkit rules.
+
 * Mon Oct 31 2016 x <ming.wang@i-soft.com.cn> - 0.1.0-1
 - Version 1.0.0-1.
 
