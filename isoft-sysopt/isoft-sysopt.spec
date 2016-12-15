@@ -1,11 +1,12 @@
 Name: isoft-sysopt
 Version: 1.0.0
-Release: 2
+Release: 3
 Summary: viewing internet speed and memory use on your system.
 
 License: GPLv2 or GPLv3
 URL: git@git.isoft.zhcn.cc:wangxiaomei/isoftsysopt.git
 Source0: %{name}-%{version}.tar.gz
+Patch0: install_polkit_rules.patch
 
 BuildRequires: qt5-qtbase-devel
 BuildRequires: qt5-qtscript-devel
@@ -44,6 +45,9 @@ popd
 %{_libdir}/python2.7/dist-packages/isoft-assistant-daemon/*
 
 %changelog
+* Thu Dec 15 2016 x - 1.0.0-3
+- Install polkit rules.
+
 * Wed Dec 14 2016 x - 1.0.0-2
 - Code optimization, add polkit rules.
 

@@ -1,0 +1,14 @@
+diff -Nur isoft-sysopt-1.0.0/sysopt.pro isoft-sysopt-1.0.0-n/sysopt.pro
+--- isoft-sysopt-1.0.0/sysopt.pro	2016-12-14 18:04:13.000000000 +0800
++++ isoft-sysopt-1.0.0-n/sysopt.pro	2016-12-15 10:25:45.192765822 +0800
+@@ -76,8 +76,8 @@
+     policy.path = $$DATADIR/polkit-1/actions/
+     policy.files = org.freedesktop.sysopt.policy
+ 
+-    policy.path = $$DATADIR/polkit-1/rules.d/
+-    policy.files = 22-sysopt.rules
++    rules.path = $$DATADIR/polkit-1/rules.d/
++    rules.files = 22-sysopt.rules
+ }
+ 
+ OBJECTS_DIR = .obj
