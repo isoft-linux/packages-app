@@ -4,7 +4,7 @@
 Summary: Mozilla Thunderbird mail/newsgroup client
 Name: thunderbird
 Version: 38.3.0
-Release: 18 
+Release: 19
 URL: http://www.mozilla.org/projects/thunderbird/
 License: MPL
 Source0: thunderbird-%{version}.source.tar.bz2
@@ -152,6 +152,9 @@ update-desktop-database ||:
 %{_libdir}/thunderbird*
 
 %changelog
+* Fri Dec 16 2016 sulit - 38.3.0-19
+- rebuild
+
 * Sun Nov 01 2015 Cjacker <cjacker@foxmail.com> - 38.3.0-18
 - Rebuild with icu 56.1
 
