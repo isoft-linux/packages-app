@@ -51,6 +51,7 @@ BuildRequires:  autoconf213
 BuildRequires:  pulseaudio-libs-devel
 BuildRequires:  sqlite-devel
 BuildRequires:  libffi-devel
+BuildRequires:  libXcomposite-devel
 BuildRequires:  zlib-devel, gzip, zip, unzip
 BuildRequires:  yasm
 
