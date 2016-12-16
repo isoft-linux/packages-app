@@ -61,7 +61,7 @@ Requires: desktop-file-utils
 Requires: hunspell
 
 Obsoletes: MozillaThunderbird
-Provides: MozillaThunderbird = %{epoch}:%{version}
+Provides: MozillaThunderbird = %{version}
 
 %define _use_internal_dependency_generator 0
 %define __find_requires %{SOURCE100}
