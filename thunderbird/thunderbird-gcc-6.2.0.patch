@@ -1,0 +1,26 @@
+diff -Nur comm-esr38/mozilla/memory/mozalloc/mozalloc.h comm-esr38n/mozilla/memory/mozalloc/mozalloc.h
+--- comm-esr38/mozilla/memory/mozalloc/mozalloc.h	2015-09-28 20:41:00.000000000 +0800
++++ comm-esr38n/mozilla/memory/mozalloc/mozalloc.h	2016-12-19 11:16:16.074154562 +0800
+@@ -12,7 +12,9 @@
+  * https://bugzilla.mozilla.org/show_bug.cgi?id=427099
+  */
+ 
++#define _GLIBCXX_INCLUDE_NEXT_C_HEADERS
+ #include <stdlib.h>
++#undef _GLIBCXX_INCLUDE_NEXT_C_HEADERS
+ #include <string.h>
+ #if defined(__cplusplus)
+ #  include <new>
+diff -Nur comm-esr38/mozilla/nsprpub/config/make-system-wrappers.pl comm-esr38n/mozilla/nsprpub/config/make-system-wrappers.pl
+--- comm-esr38/mozilla/nsprpub/config/make-system-wrappers.pl	2015-09-28 20:41:04.000000000 +0800
++++ comm-esr38n/mozilla/nsprpub/config/make-system-wrappers.pl	2016-12-19 11:17:51.474150308 +0800
+@@ -19,7 +19,9 @@
+     open OUT, ">$output_dir/$_";
+     print OUT "#pragma GCC system_header\n";  # suppress include_next warning
+     print OUT "#pragma GCC visibility push(default)\n";
++	print OUT "#define _GLIBCXX_INCLUDE_NEXT_C_HEADERS\n";
+     print OUT "#include_next \<$_\>\n";
++	print OUT "#undef _GLIBCXX_INCLUDE_NEXT_C_HEADERS\n";
+     print OUT "#pragma GCC visibility pop\n";
+     close OUT;
+ }

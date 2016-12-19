@@ -18,6 +18,7 @@ Source200: thunderbird-kde.js
 
 Patch0: thunderbird-install-dir.patch
 Patch1: thunderbird-freetype26.patch
+Patch2: thunderbird-gcc-6.2.0.patch
 
 Patch10: thunderbird-mozilla-kde.patch
 Patch11: thunderbird-firefox-kde.patch
@@ -76,6 +77,7 @@ Mozilla Thunderbird is a standalone mail and newsgroup client.
 %setup -q -n comm-esr38
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 pushd mozilla
 %patch10 -p1
@@ -155,6 +157,7 @@ update-desktop-database ||:
 %changelog
 * Fri Dec 16 2016 sulit - 38.3.0-19
 - rebuild
+- add gcc 6.2.0 build patch
 
 * Sun Nov 01 2015 Cjacker <cjacker@foxmail.com> - 38.3.0-18
 - Rebuild with icu 56.1
