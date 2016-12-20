@@ -1,6 +1,6 @@
 Name: chromium
 Version: 47.0.2526.80  
-Release: 4%{?dist}
+Release: 5%{?dist}
 Summary: Open-source version of Google Chrome web browser
 
 License: BSD and LGPLv2+
@@ -234,6 +234,9 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 
 
 %changelog
+* Tue Dec 20 2016 sulit - 47.0.2526.80-5
+- rebuild
+
 * Fri Jan 15 2016 xiaotian.wu@i-soft.com.cn - 47.0.2526.80-4
 - Rename to iSoft Desktop on about page.
 
