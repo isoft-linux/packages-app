@@ -1,6 +1,6 @@
 Name: chromium
-Version: 47.0.2526.80  
-Release: 5%{?dist}
+Version: 55.0.2883.87
+Release: 1%{?dist}
 Summary: Open-source version of Google Chrome web browser
 
 License: BSD and LGPLv2+
@@ -18,13 +18,13 @@ Source3: chromium-browser.svg
 # Enable window title frame under KDE
 Patch0: chromium-enable-custom-window-title-frame.patch
 # Patches to fix chromium issue under kf5
-Patch3: chromium-kf5.patch
+# Patch3: chromium-kf5.patch
 Patch4: chromium-fix-kf5-kioslaverc-dir.patch
 
 #revert: https://codereview.chromium.org/1303313005
 #This commit cause no border of chromium popup menu under KF5.
 #Let's revert it.
-Patch5: chromium-revert-issue-1303313005-patch.patch
+#Patch5: chromium-revert-issue-1303313005-patch.patch
 
 #the way chromium support kdialog is via involking 'kdialog' command.
 #It had a issue that:
@@ -41,10 +41,10 @@ Patch5: chromium-revert-issue-1303313005-patch.patch
 Patch6: force-chromium-save-html-as-complete-page-when-use-kde-and-not-force-to-gtkdialog.patch
 
 # https://code.google.com/p/chromium/issues/detail?id=505226
-Patch100: 0001-Add-FPDFAPIJPEG_-prefix-to-more-libjpeg-functions.patch
+#Patch100: 0001-Add-FPDFAPIJPEG_-prefix-to-more-libjpeg-functions.patch
 
 # https://code.google.com/p/chromium/issues/detail?id=480415
-Patch101: chromium-fix-print-preview-on-en_GB-locale.patch
+#Patch101: chromium-fix-print-preview-on-en_GB-locale.patch
  
 # I don't have time to test whether it work on other architectures
 ExclusiveArch: x86_64
@@ -103,13 +103,13 @@ Requires:   hicolor-icon-theme
 %prep
 %setup -q -n chromium-%{version}
 %patch0 -p1
-%patch3 -p1
+#%patch3 -p1
 %patch4 -p1
-%patch5 -p1
+#%patch5 -p1
 %patch6 -p1
 
-%patch100 -p1 -d third_party/pdfium
-%patch101 -p1
+#%patch100 -p1 -d third_party/pdfium
+#%patch101 -p1
 
 # https://groups.google.com/a/chromium.org/d/topic/chromium-packagers/9JX1N2nf4PU/discussion
 touch chrome/test/data/webui/i18n_process_css_test.html
@@ -234,6 +234,9 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 
 
 %changelog
+* Tue Dec 27 2016 sulit - 55.0.2883.87-1
+- upgrade chromium to 55.0.2883.87
+
 * Tue Dec 20 2016 sulit - 47.0.2526.80-5
 - rebuild
 
