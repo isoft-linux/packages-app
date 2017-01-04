@@ -1,13 +1,13 @@
 # we do not ship debug package of thunderbird.
-%define debug_package %{nil}
+# %define debug_package %{nil}
 
 Summary: Mozilla Thunderbird mail/newsgroup client
 Name: thunderbird
-Version: 38.3.0
-Release: 19
+Version: 45.6.0
+Release: 1
 URL: http://www.mozilla.org/projects/thunderbird/
 License: MPL
-Source0: thunderbird-%{version}.source.tar.bz2
+Source0: thunderbird-%{version}.source.tar.xz
 Source1: thunderbird.desktop
 Source4: thunderbird-mozconfig
 Source10:  thunderbird-vendor.js
@@ -17,19 +17,37 @@ Source100: find-external-requires
 Source200: thunderbird-kde.js
 
 Patch0: thunderbird-install-dir.patch
-Patch1: thunderbird-freetype26.patch
 Patch2: thunderbird-gcc-6.2.0.patch
 
-Patch10: thunderbird-mozilla-kde.patch
-Patch11: thunderbird-firefox-kde.patch
-Patch12: thunderbird-toolkit-download-folder.patch
+#Patch10: thunderbird-mozilla-kde.patch
+#Patch11: thunderbird-firefox-kde.patch
+#Patch12: thunderbird-toolkit-download-folder.patch
 Patch13: thunderbird-mozilla-nongnome-proxies.patch 
+
+# Build patches
+Patch100:       thunderbird-objdir.patch
+Patch101:       build-nspr-prbool.patch
+Patch102:       build-werror.patch
+Patch105:       lightning-bad-langs.patch
+# Linux specific
+Patch200:       thunderbird-enable-addons.patch
+
+# PPC fix
+Patch300:       xulrunner-24.0-jemalloc-ppc.patch
+Patch301:       mozilla-1228540-1.patch
+Patch302:       mozilla-1228540.patch
+Patch303:       mozilla-1253216.patch
+Patch304:       mozilla-1245783.patch
+
+Patch400:       rhbz-966424.patch
+Patch402:       rhbz-1014858.patch
 
 BuildRequires:  nss-devel 
 BuildRequires:  nspr-devel
 BuildRequires:  hunspell-devel 
 BuildRequires:  nspr-devel
 BuildRequires:  nss-devel
+BuildRequires:  nss-pem
 BuildRequires:  libpng-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  bzip2-devel
@@ -58,6 +76,7 @@ BuildRequires:  yasm
 
 
 Requires: nss
+Requires: nss-pem
 Requires: nspr
 Requires: desktop-file-utils
 Requires: hunspell
@@ -74,17 +93,23 @@ Mozilla Thunderbird is a standalone mail and newsgroup client.
 #===============================================================================
 
 %prep
-%setup -q -n comm-esr38
+#%setup -q -n comm-esr45
+%setup -q
 %patch0 -p1
-%patch1 -p1
 %patch2 -p1
-
+%patch100 -p2 -b .objdir
 pushd mozilla
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
+#%patch10 -p1
+#%patch11 -p1
+%patch300 -p2 -b .852698
+%patch303 -p2 -b .mozilla-1253216
+%patch400 -p1 -b .966424
+%patch304 -p1 -b .1245783
+
 %patch13 -p1
 popd
+%patch105 -p1 -b .bad-langs
+%patch200 -p1 -b .addons
 
 cp -f %{SOURCE4} .mozconfig
 echo "mk_add_options MOZ_MAKE_FLAGS='%{?_smp_mflags}'" >> .mozconfig
@@ -155,6 +180,9 @@ update-desktop-database ||:
 %{_libdir}/thunderbird*
 
 %changelog
+* Thu Dec 29 2016 sulit - 45.6.0-1
+- upgrade thunderbird to 45.6.0
+
 * Fri Dec 16 2016 sulit - 38.3.0-19
 - rebuild
 - add gcc 6.2.0 build patch
