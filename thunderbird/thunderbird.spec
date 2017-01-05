@@ -73,6 +73,7 @@ BuildRequires:  libffi-devel
 BuildRequires:  libXcomposite-devel
 BuildRequires:  zlib-devel, gzip, zip, unzip
 BuildRequires:  yasm
+BuildRequires:  GConf2-devel
 
 
 Requires: nss
