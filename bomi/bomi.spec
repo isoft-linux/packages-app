@@ -2,7 +2,7 @@ Name:       bomi
 Summary:    A multimedia player
 License:    GPLv2
 Version:    0.9.11
-Release:    5%{?dist}
+Release:    6%{?dist}
 Url:        http://bomi.github.io/
 Source0:    https://github.com/xylosper/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 
@@ -84,6 +84,9 @@ xdg-icon-resource forceupdate --theme hicolor &> /dev/null
 %{_mandir}/man1/bomi.1.gz
 
 %changelog
+* Mon Jan 09 2017 sulit - 0.9.11-6
+- rebuild
+
 * Sat Nov 21 2015 Cjacker <cjacker@foxmail.com> - 0.9.11-5
 - disable mpris2 option by default
 
