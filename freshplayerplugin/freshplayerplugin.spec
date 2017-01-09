@@ -1,6 +1,6 @@
 Name: freshplayerplugin 
 Version: 0.3.4
-Release: 2.git
+Release: 3.git
 Summary: PPAPI-host NPAPI-plugin adapter.
 
 License: MIT
@@ -52,6 +52,9 @@ popd
 %{_libdir}/mozilla/plugins/libfreshwrapper-flashplayer.so
 
 %changelog
+* Mon Jan 09 2017 sulit - 0.3.4-3.git
+- rebuild
+
 * Sun Oct 25 2015 Cjacker <cjacker@foxmail.com> - 0.3.4-2.git
 - Rebuild for new 4.0 release
 
