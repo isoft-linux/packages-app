@@ -18,7 +18,7 @@ BuildArch: noarch
 Languages pack for thunderbird
 
 %prep
-%setup -c -q
+%setup -q
 
 %build
 %install
