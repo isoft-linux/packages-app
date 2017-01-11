@@ -18,6 +18,7 @@ BuildRequires:  qt5-qtbase-devel >= 5.1.1
 BuildRequires:  qt5-qtdeclarative-devel
 BuildRequires:  qt5-qtquickcontrols
 BuildRequires:  qt5-qtx11extras-devel
+BuildRequires:  qt5-qttools-devel
 
 BuildRequires:  gcc >= 4.8
 BuildRequires:  glib2-devel
@@ -29,6 +30,7 @@ BuildRequires:  libdvdnav-devel
 BuildRequires:  libdvdread-devel
 BuildRequires:  libmpg123-devel
 BuildRequires:  libva-devel
+BuildRequires:  alsa-lib-devel
 BuildRequires:  python
 BuildRequires:  xcb-util-devel
 BuildRequires:  xcb-util-wm-devel
