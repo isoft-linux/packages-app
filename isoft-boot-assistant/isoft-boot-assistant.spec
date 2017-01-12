@@ -1,6 +1,6 @@
 Name: isoft-boot-assistant
 Version: 0.1.0
-Release: 1
+Release: 2
 Summary: Boot assistant show the cost time of booting.
 
 License: GPLv2 or GPLv3
@@ -33,9 +33,12 @@ popd
 %defattr(-,root,root,-)
 %{_bindir}/*
 %{_datadir}/%{name}/*
-%{_datadir}/autostart/%{name}.desktop
+%{_sysconfdir}/xdg/autostart/%{name}.desktop
 
 %changelog
+* Thu Jan 12 2017 x - 0.1.0-2
+- Install desktopfile to /etc/xdg/autostart
+
 * Mon Oct 31 2016 x <ming.wang@i-soft.com.cn> - 0.1.0-1
 - Version 0.1.0-1.
 
