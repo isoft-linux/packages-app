@@ -35,6 +35,7 @@ BuildRequires:  alsa-lib-devel
 BuildRequires:  python
 BuildRequires:  xcb-util-devel
 BuildRequires:  xcb-util-wm-devel
+BuildRequires:  qt5-qtsvg-devel
 Requires: qt5-qtquickcontrols
 
 %description
