@@ -4,10 +4,11 @@ License:    GPLv2
 Version:    0.9.11
 Release:    6%{?dist}
 Url:        http://bomi.github.io/
+# get source from https://github.com/Kagami/bomi/archive/master.zip for fixing ffmpeg 3.2 build bug
 Source0:    https://github.com/xylosper/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 
 Patch0: bomi-customized.patch
-Patch1: bomi-add-zh-trans.patch
+#Patch1: bomi-add-zh-trans.patch
 Patch2: bomi-always-use-utf8-to-load-playlist.patch
 
 BuildRequires:  ffmpeg-devel
@@ -18,6 +19,7 @@ BuildRequires:  qt5-qtbase-devel >= 5.1.1
 BuildRequires:  qt5-qtdeclarative-devel
 BuildRequires:  qt5-qtquickcontrols
 BuildRequires:  qt5-qtx11extras-devel
+BuildRequires:  qt5-qttools-devel
 
 BuildRequires:  gcc >= 4.8
 BuildRequires:  glib2-devel
@@ -29,6 +31,7 @@ BuildRequires:  libdvdnav-devel
 BuildRequires:  libdvdread-devel
 BuildRequires:  libmpg123-devel
 BuildRequires:  libva-devel
+BuildRequires:  alsa-lib-devel
 BuildRequires:  python
 BuildRequires:  xcb-util-devel
 BuildRequires:  xcb-util-wm-devel
@@ -40,7 +43,7 @@ bomi is a Qt-based multimedia player utilizing the MPV video back-end.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
+#%patch1 -p1
 %patch2 -p1
 
 %build
