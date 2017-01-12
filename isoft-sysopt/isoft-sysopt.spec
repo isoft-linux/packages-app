@@ -1,6 +1,6 @@
 Name: isoft-sysopt
 Version: 1.0.0
-Release: 4
+Release: 5
 Summary: viewing internet speed and memory use on your system.
 
 License: GPLv2 or GPLv3
@@ -41,9 +41,14 @@ popd
 %{_bindir}/*
 %{_datadir}/applications/*
 %{_datadir}/icons/hicolor/128x128/apps/*
+%{_datadir}/polkit-1/actions/*
+%{_datadir}/polkit-1/rules.d/*
 %{_libdir}/python2.7/dist-packages/isoft-assistant-daemon/*
 
 %changelog
+* Thu Jan 12 2017 x - 1.0.0-5
+- Add polkit policy and rules file.
+
 * Fri Dec 16 2016 x - 1.0.0-4
 - Add configuration.
 
